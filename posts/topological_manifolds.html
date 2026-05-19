@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Đa tạp tôpô</title>
+
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/index.min.css">
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$']],
+    displayMath: [['$$', '$$']]
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+
+<button class="toggle" onclick="toggleDark()" id="themeBtn"></button>
+<button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+<div class="sidebar">
+  <a href="../index.html">🏠 Trang chính</a>
+  <h2>Tags</h2>
+  <a href="../basics.html">Kiến thức cơ bản</a>
+  <a href="../calulus_on_manifolds.html">Giải tích trên đa tạp</a>
+</div>
+
+<div class="content">
+  <h1>Đa tạp tôpô</h1>
+
+  <p>
+    Mục đích của bài này là đưa ra một số điều kiện cần để một không gian tôpô có thể được trang bị các cấu trúc giải tích.
+  </p>
+
+  <div class="definition">
+    <div class="def-title">Định nghĩa (Đa tạp tôpô)</div>
+    <div class="def-body">
+      Cho số nguyên dương $n$. Một <b>đa tạp tôpô</b> $n$ chiều là một không gian tôpô $M$ thỏa mãn:
+      <ul>
+        <li>$M$ là một không gian Hausdorff;</li>
+        <li>$M$ là đếm được thứ hai, nghĩa là $M$ có một cơ sở không quá đếm được;</li>
+        <li>$M$ là Euclid địa phương, tức là mỗi điểm $p\in M$ có một lân cận mở đồng phôi với một tập mở của $\mathbb{R}^{n}$.</li>
+      </ul>
+    </div>
+  </div>
+
+  <p>
+    Dễ thấy ở tiên đề thứ ba, ta có thể thay một lân cận bất kỳ của $\mathbb{R}^{n}$ thành một quả cầu mở của $\mathbb{R}^{n}$ hoặc là chính $\mathbb{R}^{n}$.
+  </p>
+
+  <p>
+    Sử dụng đối đồng điều De Rham, người ta chứng minh được rằng
+  </p>
+
+  <div class="theorem">
+    <div class="theorem-title">Định lý bất biến chiều tôpô</div>
+    <div class="theorem-body">
+      Cho hai đa tạp tôpô khác rỗng $M$ có số chiều $m$ và $N$ có số chiều $n$. Nếu $M$ và $N$ là đồng phôi thì $m=n$.
+    </div>
+  </div>
+
+  <p>
+    Ví dụ hiển nhiên nhất cho đa tạp tôpô chính là không gian $\mathbb{R}^{n}$. Nó là một không gian Hausdorff và đếm được thứ hai. Toàn bộ không gian chính là lân cận mở của mỗi điểm đồng 
+    phôi với chính $\mathbb{R}^{n}$.
+  </p>
+
+  <h2>Bản đồ tọa độ</h2>
+
+  <div class="definition">
+    <div class="def-title">Định nghĩa (bản đồ tọa độ)</div>
+    <div class="def-body">
+      
+      <p>
+        Cho $M$ là một đa tạp tôpô $n$ chiều. Một <b>bản đồ tọa độ</b> (hay ngắn gọn hơn là <b>bản đồ</b>) trên $M$ là một cặp $(U,\varphi)$, trong đó $U$ là một tập mở của $M$ và 
+        $\varphi:U\to\widehat{U}$ là một đồng phôi từ $U$ đến một tập mở $\widehat{U}=\varphi(U)$ của $\mathbb{R}^{n}$. Từ định nghĩa đa tạp tôpô, ta thấy rằng mỗi điểm $p\in M$ nằm trong 
+        một bản đồ $(U,\varphi)$. Nếu $\varphi(p)=0$, ta nói bản đồ có <b>tâm</b> tại $p$.
+      </p>
+
+      <p>
+        Cho bản đồ $(U,\varphi)$, ta gọi tập hợp $U$ là một <b>miền tọa độ</b>, hoặc là một <b>lân cận tọa độ</b> của mỗi điểm của nó. Nếu ta có thêm $\varphi(U)$ là một quả cầu mở trong 
+        $\mathbb{R}^{n}$, thì $U$ được gọi là một <b>quả cầu tọa độ</b>; nếu $\varphi(U)$ là một khối vuông mở, $U$ được gọi là một <b>khối vuông tọa độ</b>. Ánh xạ $\varphi$ được gọi là 
+        một <b>ánh xạ tọa độ (địa phương)</b>, và các hàm thành phần $(X_{1},\ldots,X_{n})$ của $\varphi$, được cho bởi $\varphi(p)=(X_{1}(p),\ldots,X_{n}(p))$, được gọi là các <b>tọa độ 
+        địa phương</b> trên $U$.
+      </p>
+
+    </div>
+  </div>
+
+  <h2>Các ví dụ đa tạp tôpô</h2>
+
+  <div class="definition">
+    <div class="def-title">Đồ thị của ánh xạ liên tục</div>
+    <div class="def-body">
+      Cho tập mở $U$ của $\mathbb{R}^{n}$, và cho $f:U\to\mathbb{R}^{k}$ là một ánh xạ liên tục. <b>Đồ thị</b> của $f$ là một tập con của $\mathbb{R}^{n}\times\mathbb{R}^{k}$ được cho bởi
+      $$\Gamma(f):=\left\{(x,y)\in\mathbb{R}^{n}\times\mathbb{R}^{k}:x\in U,y=f(x).\right\},$$
+      với tôpô cảm sinh.
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+      Gọi $\pi_{1}:\mathbb{R}^{n}\times\mathbb{R}^{k}\to\mathbb{R}^{n}$ là ánh xạ chiếu lên thành phần thứ nhất, và gọi $\varphi:\Gamma(f)\to U$ là hạn chế của $\pi_{1}$ 
+      trên $\Gamma(f)$:
+      $$\varphi(x,y)=x,\quad (x,y)\in\Gamma(f).$$
+      Vì $\varphi$ là hạn chế của một ánh xạ liên tục nên bản thân nó là liên tục; và nó là một đồng phôi vì nó có nghịch đảo liên tục $\psi(x)=(x,f(x))$. Vì vậy $\Gamma(f)$ là một đa tạp 
+      tôpô $n$ chiều. Thật ra, $\Gamma(f)$ và $U$ là đồng phôi với nhau, và $(\Gamma(f),\varphi)$ là một bản đồ tọa độ toàn cục, được gọi là các <b>tọa độ đồ thị</b>. Những lập luận này 
+      vẫn đúng với các tập con của $\mathbb{R}^{n+k}$ được định nghĩa bằng cách cho $k$ tọa độ trong chúng bằng với hàm liên tục của $n$ tọa độ còn lại và khi chúng bị hạn chế trên một tập 
+      mở của $\mathbb{R}^{n}$.
+    </div>
+  </details>
+
+  <div class="definition">
+    <div class="def-title">Mặt cầu đơn vị</div>
+    <div class="def-body">
+      Với mỗi số nguyên dương $n$, mặt cầu đơn vị $n$ chiều $\mathbb{S}^{n}$ là một không gian con của $\mathbb{R}^{n+1}$ gồm các điểm thỏa mãn $\|p\|^{2}=1$.
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+      Ta có $\mathbb{S}^{n}$ là Hausdorff và đếm được thứ hai vì nó là một không gian con của $\mathbb{R}^{n+1}$. Để chỉ ra tính Euclid địa 
+      phương, với mỗi chỉ số $i=1,\ldots,n+1$, gọi $U_{i}^{+}$ là tập con của $\mathbb{R}^{n+1}$ gồm các điểm có tọa độ thứ $i$ là dương:
+      $$U_{i}^{+}:=\left\{(X_{1},\ldots,X_{n+1})\in\mathbb{R}^{n+1}:X_{i}>0\right\}.$$
+      Tương tự, ta định nghĩa được $U_{i}^{-}$.
+      <br> Xét hàm $f:\mathbb{B}^{n}\to\mathbb{R}$ là hàm số liên tục được cho bởi công thức
+      $$f(u)=\sqrt{1-\|u\|^{2}}.$$
+      Khi đó với mỗi $i=1,\ldots,n+1$, dễ kiểm tra $U_{i}^{+}\cap\mathbb{S}^{n}$ là đồ thị của hàm số
+      $$X_{i}=f\left(X_{1},\ldots,\widehat{X_{i}},\ldots,X_{n+1}\right),$$
+      với dấu mũ để nói rằng không có mặt $X_{i}$. Tương tự, $U_{i}^{-}\cap\mathbb{S}^{n}$ là đồ thị của hàm số
+      $$X_{i}=-f\left(X_{1},\ldots,\widehat{X_{i}},\ldots,X_{n+1}\right).$$
+      Do đó, mỗi $U_{i}\cap\mathbb{S}^{n}$ là Euclid địa phương với số chiều $n$, và các ánh xạ $\varphi_{i}^{\pm}:U_{i}^{\pm}\cap\mathbb{S}^{n}\to\mathbb{B}^{n}$ được cho bởi
+      $$\varphi_{i}^{\pm}\left(X_{1},\ldots,X_{n+1}\right):=\left(X_{1},\ldots,\widehat{X_{i}},\ldots,X_{n+1}\right)$$
+      là các tọa độ đồ thị của $\mathbb{S}^{n}$. Vì mỗi điểm của $\mathbb{S}^{n}$ nằm trong ít nhất một trong $2n+2$ bản đồ này, $\mathbb{S}^{n}$ là một đa tạp tôpô $n$ chiều.
+    </div>
+  </details>
+
+  <div class="definition">
+    <div class="def-title">Không gian xạ ảnh</div>
+    <div class="def-body">
+      <b>Không gian xạ ảnh</b> thực $n$ chiều, được ký hiệu bởi $\mathbb{RP}^{n}$ (đôi khi chỉ là $\mathbb{P}^{n}$), được định nghĩa là tập hợp các không gian vector con $1$ chiều của 
+      $\mathbb{R}^{n+1}$, với tôpô thương xác định bởi phép chiếu tự nhiên $\pi:\mathbb{R}^{n+1}-\{0\}\to\mathbb{RP}^{n}$ gửi mỗi điểm $x\neq 0$ sang không gian con sinh bởi $x$. Không gian 
+      xạ ảnh $2$ chiều $\mathbb{RP}^{2}$ được gọi là <b>mặt phẳng xạ ảnh</b>. Với mỗi $x\neq 0$, gọi $[x]:=\pi(x)$ là đường thẳng sinh bởi $x$.
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh tính Euclid địa phương</summary>
+    <div class="solution-body">
+      Với mỗi $i=1,\ldots,n+1$, gọi $\tilde{U}_{i}$ là tập hợp các điểm $x$ thỏa mãn $X_{i}\neq 0$, và đặt $\pi\left(\tilde{U}_{i}\right)\subseteq\mathbb{RP}^{n}=:U_{i}$. Vì $\tilde{U}_{i}$ 
+      là một tập con mở bão hòa, $U_{i}$ là mở và $\pi|_{\tilde{U}_{i}}:\tilde{U}_{i}\to U_{i}$ là một ánh xạ thương. Định nghĩa ánh xạ $\varphi_{i}: U_{i}\to\mathbb{R}^{n}$ như sau:
+      $$\varphi_{i}\left[X_{1},\ldots,X_{n+1}\right]=\left(\dfrac{X_{1}}{X_{i}},\ldots,\widehat{\dfrac{X_{i}}{X_{i}}},\ldots,\dfrac{X_{n+1}}{X_{i}}\right).$$
+      Ánh xạ này được định nghĩa tốt vì giá trị của nó không thay đổi khi nhân $x$ với một vô hướng khác $0$. Vì $\varphi_{i}\circ\pi$ là liên tục, $\varphi_{i}$ là liên tục theo tính chất 
+      đặc trưng của ánh xạ thương. Thực ra, $\varphi_{i}$ là một đồng phôi, vì nó có nghịch đảo liên tục được cho bởi
+      $$\psi_{i}(U_{1},\ldots,U_{n}):=[U_{1},\ldots,U_{i-1},1,U_{i+1},\ldots,U_{n}].$$
+      Vì các tập hợp $U_{i}$ phủ $\mathbb{RP}^{n}$ nên $\mathbb{RP}^{n}$ là Euclid địa phương.
+    </div>
+  </details>
+
+  <p>Để chứng minh tính Hausdorff, ta cần đến bổ đề sau:</p>
+
+  <div class="theorem">
+    <div class="theorem-title">Bổ đề</div>
+    <div class="theorem-body">
+      Nếu $U$ là một tập mở của $\mathbb{R}^{n}$ thì $$\mathbb{R}^{\times}U:=\{\lambda u:\lambda\neq 0,u\in U\}$$ là một tập mở của $\mathbb{R}^{n}$.
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh bổ đề</summary>
+    <div class="solution-body">
+      Với mỗi $\lambda\neq 0$, ánh xạ nhân với $\lambda$ là một tự đồng phôi trên $\mathbb{R}^{n}$ nên $\lambda U:=\{\lambda u:u\in U\}$ là một tập mở của $\mathbb{R}^{n}$. Suy ra
+      $$\mathbb{R}^{\times}U=\bigcup_{\lambda\neq 0}rU$$
+      là một tập mở của $\mathbb{R}^{n}$.
+    </div>
+  </details>
+
+  <p>Trở lại với bài toán.</p>
+
+  <details class="solution">
+    <summary>Chứng minh tính Hausdorff</summary>
+    <div class="solution-body">
+      Giả sử $[x]\neq [y]$ là hai phần tử của $\mathbb{RP}^{n}$. Khi đó $\mathbb{R}x\cap\mathbb{R}y=\{0\}$. Không mất tính tổng quát, giả sử $\|x\|=\|y\|=1$. Khi đó ta có
+      $$d:=\min_{u\in\mathbb{R}y}\|x-u\|=\min_{v\in\mathbb{R}x}\|y-v\|=\sqrt{1-\langle x,y\rangle^{2}}.$$
+      Chọn $\varepsilon<\dfrac{d}{2}$ và đặt $B_{\varepsilon}(x)=:U,B_{\varepsilon}(y)=:V$. Theo bổ đề, ta có $\pi^{-1}(\pi(U))=\mathbb{R}^{\times}U$ là một tập mở của $\mathbb{R}^{n}$ nên 
+      $\pi(U)$ là một tập mở của $\mathbb{RP}^{n}$, tương tự với $\pi(V)$. 
+      <br> Giả sử tồn tại $[z]\in\pi(U)\cap\pi(V)$. Khi đó $z\in\mathbb{R}^{\times}U\cap\mathbb{R}^{\times}V$. Khi đó tồn tại $a,b\neq 0$ sao cho $az\in U$ và $bz\in V$, tức là 
+      $\|az-x\|\lt\varepsilon$ và $\|bz-y\|\lt\varepsilon$. Không mất tính tổng quát, giả sử $|a|\leq |b|$. Theo bất đẳng thức tam giác ta có
+      $$\|bx-ay\|\leq |b|\|az-x\|+|a|\|bz-y\|\lt (|a|+|b|)\varepsilon.$$
+      Suy ra $d\leq\left\|x-\dfrac{a}{b}y\right\|<\left(1+\dfrac{|a|}{|b|}\right)\varepsilon\leq 2\varepsilon\lt d$, mâu thuẫn.
+    </div>
+  </details>
+  
+  <div class="definition">
+    <div class="def-title">Tích của các đa tạp</div>
+    <div class="def-body">
+      Cho các đa tạp tôpô $M_{j}$ với số chiều $n_{j}$, trong đó $j=1,\ldots,k$. Không gian tôpô tích $M:=\displaystyle\prod_{j=1}^{k}M_{j}$ là một đa tạp tôpô có số chiều 
+      $\displaystyle\sum_{j=1}^{k}n_{j}$.
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+      Ta đã biết tích Descartes của các không gian Hausdorff và đếm được thứ hai cũng là Hausdorff và đếm được thứ hai.
+      <br> Với mỗi điểm $(p_{1},\ldots,p_{k})$ của $M$, ta có thể chọn lân cận $(U_{j},\varphi_{j})$ trên mỗi $M_{j}$ sao cho $p_{j}\in U_{j}$ với mỗi $j=1,\ldots,k$. Ánh xạ tích
+      $$\prod_{j=1}^{k}\varphi_{j}:\prod_{j=1}^{k}\to\mathbb{R}^{n_{1}+\cdots+n_{k}}$$
+      là một đồng phôi vào tập ảnh của nó, là một tập mở có dạng tích của $\mathbb{R}^{n_{1}+\cdots+n_{k}}$.
+      <br> Vậy $\displaystyle\prod_{j=1}^{k}M_{j}$ là một đa tạp tôpô với số chiều $\displaystyle\sum_{j=1}^{k}n_{j}$.
+    </div>
+  </details>
+
+  <h2>Các tính chất tôpô của đa tạp</h2>
+
+  <div class="theorem">
+    <div class="theorem-title">Mệnh đề</div>
+    <div class="theorem-body">
+      Mỗi đa tạp tôpô có một cơ sở đếm được các quả cầu tọa độ compact tương đối.
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+      Giả sử $M$ là một đa tạp tôpô $n$ chiều.
+      <br> Đầu tiên, giả sử $M$ được phủ bởi đúng một bản đồ. Giả sử $\varphi:M\to\widehat{U}\subseteq\mathbb{R}^{n}$ là ánh xạ tọa độ toàn cục, và gọi 
+      $\mathcal{B}$ là một cơ sở đếm được của không gian tôpô $\widehat{U}$. Vì $\varphi$ là một đồng phôi nên họ các tập hợp dạng $\varphi^{-1}(B)$, với $B\in\mathcal{B}$ là một cơ sở đếm 
+      được của $M$, gồm các quả cầu tọa độ compact tương đối với ánh xạ tọa độ là hạn chế tương ứng của $\varphi$.
+      <br> Giờ giả sử $M$ là một đa tạp tôpô $n$ chiều bất kỳ. Theo định nghĩa, mỗi điểm của $M$ nằm trong một bản đồ. Vì mỗi phủ mở của một không gian đếm được thứ hai có một phủ con đếm 
+      được nên $M$ được phủ bởi đếm được các bản đồ $(U_{i},\varphi_{i})$. Sử dụng lập luận ở đoạn trên, mỗi $U_{i}$ có một cơ sở đếm được các quả cầu tọa độ compact tương đối trong 
+      $U_{i}$, và hợp thành của chúng là một cơ sở đếm được của $M$. Nếu $V\subseteq U_{i}$ là một trong số các quả cầu đó, thì bao đóng của $V$ trong $U_{i}$ là compact, và vì $M$ là 
+      Hausdorff nên nó là đóng trong $M$. Từ đó ta suy ra bao đóng trong $M$ của $V$ cũng chính là bao đóng của $V$ trong $U_{i}$, suy ra $V$ cũng là compact tương đối trong $M$.
+    </div>
+  </details>
+
+  <div class="theorem">
+    <div class="theorem-title">Mệnh đề</div>
+    <div class="theorem-body">
+      Cho đa tạp tôpô $M$. Khi đó:
+      <ol>
+        <li>$M$ là liên thông đường địa phương;</li>
+        <li>$M$ là liên thông khi và chỉ khi $M$ là liên thông đường;</li>
+        <li>các thành phần liên thông của $M$ cũng chính là các thành phần liên thông đường;</li>
+        <li>$M$ có không quá đếm được các thành phần liên thông, mỗi thành phần là một tập con mở của $M$ và là một đa tạp tôpô liên thông.</li>
+      </ol>
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+      Vì mỗi quả cầu tọa độ là liên thông đường và $M$ có một cơ sở đếm được các quả cầu tọa độ nên ta có ngay ý đầu tiên, từ đó ta cũng có hai ý sau. Để chứng minh ý cuối cùng, để ý rằng 
+      mỗi thành phần liên thông là mở trong $M$ nên họ các thành phần liên thông là một phủ mở của $M$. Vì $M$ là đếm được thứ hai nên họ này phải chứa một phủ con đếm được. Mà các thành 
+      phần liên thông của $M$ đôi một rời nhau nên bản thân họ này phải là đếm được, hay là $M$ chỉ có đếm được thành phần liên thông. Và vì các thành phần liên thông là mở trong $M$ nên 
+      chúng là các đa tạp liên thông với tôpô cảm sinh từ $M$.
+    </div>
+  </details>
+
+  <h4>Tiếp theo</h4>
+  <a href="smooth_structures.html">Cấu trúc trơn</a>
+
+</div>
+
+<script src="../assets/script.js"></script>
+
+</body>
+
+</html>

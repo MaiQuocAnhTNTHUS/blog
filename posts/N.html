@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Nguồn gốc của các con số. Phần 1: Làm thế nào để đếm?</title>
+
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/index.min.css">
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$']],
+    displayMath: [['$$', '$$']]
+  }
+};
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+
+<button class="toggle" onclick="toggleDark()" id="themeBtn"></button>
+<button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+<div class="sidebar">
+  <a href="../index.html">🏠 Trang chính</a>
+  <h2>Tags</h2>
+  <a href="../basics.html">Kiến thức cơ bản</a>
+  <a href="../calulus_on_manifolds.html">Giải tích trên đa tạp</a>
+</div>
+
+<div class="content">
+
+  <h1>Nguồn gốc của các con số <br> Phần 1: Làm thế nào để đếm?</h1>
+
+  <p>
+    Con người đã đếm từ hàng ngàn năm trước. Đếm là một việc đơn giản đến mức một đứa trẻ bốn tuổi cũng có thể làm.
+    Nhưng thực sự thì các con số là gì? Chúng ta đã phát minh ra chúng như thế nào? Để trả lời câu hỏi này, ta sẽ cùng nhau đi một đoạn đường dài và thử thách, nhưng quả ngọt sẽ rất đáng giá.
+  </p>
+
+  <h2>Xây dựng tập hợp các số tự nhiên $\mathbb{N}$</h2>
+
+  <p>
+    Trước khi bắt đầu xây dựng, bạn phải trả lời được câu hỏi: <b>Bạn muốn điều gì ở tập hợp các số tự nhiên?</b>
+    <br> Điều đầu tiên ta có thể nghĩ đến (dù không "tự nhiên" cho lắm), đó là <b>số 0</b>. 
+    Nó là khởi đầu của mọi thứ, dù bạn không bao giờ bắt đầu đếm từ 0. Tiếp theo, khi bạn đếm xong một số, bạn cần đếm tiếp <b>số liền sau</b> của số đó. Chí ít thì ta cũng phải làm được như 
+    vậy với các số tự nhiên.
+  </p>
+
+  <p>
+    Như vậy, bạn cần một bộ ba $(S, 0_{S}, s)$, với $S$ là <b>tập hợp số</b>, $0_{S}$ là <b>điểm khởi đầu</b>, và $s:S\to S$ là <b>hàm kế tiếp</b>, tức là cách bạn đếm sang số liền sau. 
+    Ánh xạ $s$ nên là một đơn ánh, vì bạn sẽ không muốn dùng một số để đếm hai lần trong khi đếm.
+  </p>
+
+  <p>
+    Chúc mừng, giờ bạn đã có một hệ thống số đếm của riêng mình rồi đấy! Lúc này, bạn có thể tự hỏi về sự tồn tại của các hệ đếm khác. Vấn đề là, làm thế nào để đối chiếu chúng với nhau? 
+    <br> Để làm vậy, bạn cần một <b>cấu xạ</b> giữa hai hệ đếm. Giả sử bạn có hai hệ đếm $(R, 0_{R}, r)$ và $(S, 0_{S}, s)$. Một cấu xạ giữa chúng chí ít cũng nên là một ánh xạ $f:R\to S$. 
+    Vì bạn muốn đếm từ cùng một khởi đầu, $f$ nên thỏa mãn $f(0_{R})=0_{S}$. Cuối cùng, vì bạn cũng muốn đếm bằng cả hai hệ một cách song song, $f$ nên thỏa mãn
+    $$f(r(x))=s(f(x))\quad\forall x\in R,$$
+    hay viết gọn hơn là $f\circ r=s\circ f$. Nhờ có các cấu xạ, giờ bạn có thể chỉ ra hai hệ đếm thế nào là "tương đương" với nhau:
+  </p>
+
+  <div class="definition">
+    <div class="def-title">Định nghĩa</div>
+    <div class="def-body">
+      Hai hệ đếm $(R, 0_{R}, r)$ và $(S, 0_{S}, s)$ được gọi là <b>tương đương</b> nếu tồn tại một cặp cấu xạ $f:R\to S$ và $g:S\to R$ sao cho $g\circ f=\mathrm{id}_R$ và $f\circ g=\mathrm{id}_S$.
+    </div>
+  </div>
+
+  <p>
+    Bạn sẽ muốn hệ đếm của mình có thể sử dụng ở mọi nơi (hay còn gọi là <b>phổ dụng</b>). Điều này có nghĩa là, với bất kỳ hệ đếm nào khác, bạn có duy nhất một cách đối chiếu hệ đếm của bạn với nó:
+  </p>
+
+  <div class="definition">
+    <div class="def-title">Định nghĩa</div>
+    <div class="def-body">
+      Một hệ đếm $(U, 0_{U}, u)$ được gọi là <b>phổ dụng</b> nếu với hệ đếm $(S, 0_{S}, s)$ bất kỳ, tồn tại duy nhất một cấu xạ $f:U\to S$.
+    </div>
+  </div>
+
+  <p>
+    May mắn thay, nếu có một hệ đếm nào như thế, thì nó là duy nhất (sai khác một phép tương đương). Thật vậy, giả sử $(U, 0_{U}, u)$ và $(V, 0_{V}, v)$ đều là các hệ đếm phổ dụng. 
+    Vì $U$ là phổ dụng, tồn tại duy nhất một cấu xạ $f:U\to V$. Vì $V$ là phổ dụng, tồn tại duy nhất một cấu xạ $g:V\to U$. Như vậy, ta có hai cấu xạ đi từ hệ đếm $U$ vào chính nó, đó là
+    $g\circ f:U\to U$ và $\mathrm{id}_U:U\to U$. Vì $U$ là phổ dụng, hai cấu xạ này phải trùng nhau, tức là $g\circ f=\mathrm{id}_U$. Tương tự, ta cũng có $f\circ g=\mathrm{id}_V$.
+    Như vậy, hai hệ đếm $U$ và $V$ là tương đương với nhau.
+  </p>
+
+  <p>
+    Xui một cái là ta hoàn toàn không biết liệu có tồn tại một hệ đếm phổ dụng nào hay không. Nhưng nhờ có lý thuyết tập hợp tiên đề, sự tồn tại của một hệ đếm phổ dụng đã được 
+    John von Neumann khẳng định.
+  </p>
+
+  <div class="definition">
+    <div class="def-title">Định nghĩa</div>
+    <div class="def-body">
+      Tập hợp $S$ được gọi là <b>quy nạp</b> nếu $\varnothing\in S$ và với mỗi $x\in S$, ta có $x\cup\{x\}\in S$.
+    </div>
+  </div>
+
+  <div class="axiom">
+    <div class="axiom-title">Tiên đề vô hạn (Axiom of Infinity)</div>
+    <div class="axiom-body">
+      Tồn tại một tập hợp quy nạp.
+    </div>
+  </div>
+
+  <p>
+    Từ tiên đề vô hạn, ta có thể xây dựng một hệ đếm phổ dụng như sau: Gọi $\mathbb{N}$ là giao của tất cả các tập hợp quy nạp. Vì có ít nhất một tập hợp quy nạp, $\mathbb{N}$ được định nghĩa 
+    tốt. Từ định nghĩa của tập hợp quy nạp, ta thấy rằng giao của một họ tùy ý các tập hợp quy nạp cũng là quy nạp, nên $\mathbb{N}$ là một tập hợp quy nạp. Hơn nữa, nó còn là tập hợp quy nạp 
+    nhỏ nhất. Từ đó ta có
+  </p>
+
+  <div class="theorem">
+    <div class="theorem-title">Nguyên lý quy nạp</div>
+    <div class="theorem-body">
+      Nếu $S$ là một tập con quy nạp của $\mathbb{N}$, thì $S=\mathbb{N}$.
+    </div>
+  </div>
+  
+  <p>
+    Đặt $\varnothing=:0$ và $\mathrm{succ}:\mathbb{N}\to\mathbb{N}$ là hàm kế tiếp, tức là $\mathrm{succ}(n)=n\cup\{n\}$. Nhiệm vụ cuối cùng của ta là chứng minh hệ đếm 
+    $(\mathbb{N}, 0, \mathrm{succ})$ là phổ dụng.
+  </p>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+      Lấy một hệ đếm $(S, 0_{S}, s)$ bất kỳ. Xét tập hợp
+      $$S:=\{n\in\mathbb{N}: \exists g_{n}:\mathrm{succ}(n)\to S: g_{n}(0)=0_{S}, g_{n}(\mathrm{succ}(k))=s(g_{n}(k))\quad\forall k\in n \}.$$
+      Dễ thấy $0\in S$ và nếu ta có $g_{n}:\mathrm{succ}(n)\to S$, thì $g_{\mathrm{succ}(n)}:\mathrm{succ}(\mathrm{succ}(n))\to S$ được cho bởi
+      $$g_{\mathrm{succ}(n)}(m) := \begin{cases}
+      g_{n}(m) & \text{nếu } m\in\mathrm{succ}(n); \\
+      s(g_{n}(n)) & \text{nếu } m = \mathrm{succ}(n)
+      \end{cases}$$
+      là một hàm từ $\mathrm{succ}(\mathrm{succ}(n))$ vào $S$ thỏa mãn $g_{\mathrm{succ}(n)}(0)=0_{S}$ và $g_{\mathrm{succ}(n)}(\mathrm{succ}(k))=s(g_{\mathrm{succ}(n)}(k))$ với mỗi 
+      $k\in\mathrm{succ}(n)$. Do đó, $\mathrm{succ}(n)\in S$. Từ nguyên lý quy nạp, ta có $S=\mathbb{N}$. Các hàm $g_{n}$ là lồng nhau, do đó hợp của chúng là một hàm 
+      $f:\mathbb{N}\to S$.
+    </div>
+  </details>
+  
+  <p>
+    Bạn thấy chứng minh này có gì đó sai sai không? Thực ra, tôi chưa một lần chứng minh các $g_{n}$ là lồng nhau. Tuy nhiên, điều đó sẽ ngay lập tức sáng tỏ ở phần sau.
+  </p>
+
+  <h2>Thứ tự trên $\mathbb{N}$</h2>
+
+  <p>
+    Với cách định nghĩa của ta, mỗi phần tử của $\mathbb{N}$ vốn là một tập hợp, do đó ta có ngay một quan hệ thứ tự tự nhiên trên $\mathbb{N}$, đó là quan hệ bao hàm:
+    $$m\leq n\iff m\subseteq n.$$
+    Vấn đề là, <b>liệu đây có phải là một quan hệ thứ tự toàn phần không?</b>
+    Để trả lời nó, ta cần các "viên gạch" nhỏ sau:
+  </p>
+
+  <div class="theorem">
+    <div class="theorem-title">Mệnh đề</div>
+    <div class="theorem-body">
+      Không có tập hợp nào nằm giữa $n$ và $\mathrm{succ}(n)$. Tức là, nếu $n\subseteq m\subseteq \mathrm{succ}(n)$, thì $m=n$ hoặc $m=\mathrm{succ}(n)$.
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+      Nếu $m\setminus n=\varnothing$, thì $m\subseteq n$, và do đó $m=n$. 
+      <br> Nếu $m\setminus n\neq\varnothing$, thì $m\setminus n=\{n\}$, và do đó $m=\mathrm{succ}(n)$.
+    </div>
+  </details>
+
+  <div class="theorem">
+    <div class="theorem-title">Mệnh đề</div>
+    <div class="theorem-body">
+      Cho $n\in\mathbb{N}$. Nếu $x\in n$ thì $x\in\mathbb{N}$ và $x\subseteq n$.
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+      Ta chứng minh bằng quy nạp. Với $n=0$, mệnh đề đúng vì $0$ là tập rỗng. Giả sử mệnh đề đúng với $n$, ta sẽ chứng minh nó đúng với $\mathrm{succ}(n)$. Nếu $x\in\mathrm{succ}(n)$, thì 
+      $x\in n$ hoặc $x=n$. Trong cả hai trường hợp, ta đều có $x\in\mathbb{N}$ và $x\subseteq n\subseteq \mathrm{succ}(n)$.
+    </div>
+  </details>
+
+  <div class="theorem">
+    <div class="theorem-title">Mệnh đề</div>
+    <div class="theorem-body">
+      Với mỗi $n\in\mathbb{N}$, ta có $n\notin n$. Từ đó suy ra $n\subset\mathrm{succ}(n)$ và $\mathbb{N}\notin\mathbb{N}$.
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+      Ta chứng minh bằng quy nạp. Với $n=0$, mệnh đề đúng vì $0$ là tập rỗng. Giả sử mệnh đề đúng với $n$, ta sẽ chứng minh nó đúng với $\mathrm{succ}(n)$. Nếu 
+      $\mathrm{succ}(n)\in\mathrm{succ}(n)$, thì hoặc $\mathrm{succ}(n)\in n$, hoặc $\mathrm{succ}(n)=n$. Từ mệnh đề trước, ta thấy rằng cả hai trường hợp đều dẫn đến 
+      $\mathrm{succ}(n)\subseteq n$. Mà $n\in\mathrm{succ}(n)$ nên $n\in n$, mâu thuẫn. Do đó, $\mathrm{succ}(n)\notin\mathrm{succ}(n)$.
+    </div>
+  </details>
+
+  <div class="theorem">
+    <div class="theorem-title">Định lý</div>
+    <div class="theorem-body">
+      Với mỗi $n\in\mathbb{N}$, nếu $x\in\mathbb{N}$ và $x\subset n$, thì $x\in n$.
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+      Ta chứng minh bằng quy nạp. Với $n=0$, mệnh đề đúng vì $0$ là tập rỗng. Giả sử mệnh đề đúng với $n$, ta sẽ chứng minh nó đúng với $\mathrm{succ}(n)$. Giả sử $x\in\mathbb{N}$ và 
+      $x\subset\mathrm{succ}(n)$. Nếu $n\in x$ thì $n\subseteq x\subset\mathrm{succ}(n)$, suy ra $x=n$, mâu thuẫn. Vậy $n\notin x$, suy ra $x\subseteq n$. Nếu $x=n$ thì $x\in\mathrm{succ}(n)$, 
+      còn nếu $x\subset n$ thì $x\in n$ theo giả thiết quy nạp.
+    </div>
+  </details>
+
+  <p>
+    Như vậy, với mỗi $n\in\mathbb{N}$, ta có $n=\{x\in\mathbb{N}:x\subset n\}$.
+    <br> Giờ xét $a,b\in\mathbb{N}$ và đặt $a\cap b=:c$. Khi đó
+    $$x\in c\iff x\in a\text{ và }x\in b\iff x\in\mathbb{N},x\subset a,\text{ và }x\subset b.$$
+    Nếu $c\in c$, thì $c\in a$, và do đó $c\in\mathbb{N}$, mâu thuẫn. Vậy $c\notin c$ và
+    $$c=\{x\in\mathbb{N}:x\subseteq c\}=\{x\in\mathbb{N}:x\subset c\}.$$
+    Nếu $a=0$ (tương ứng, $b=0$) thì $a\subseteq b$ (tương ứng, $b\subseteq a$).
+    Nếu $0\subset a,b$, thì $0\in a,b$, do đó $0\in c$. Nếu $n \in c$, thì $n\subset c$. Điều này dẫn đến $\mathrm{succ}(n)\subseteq c$. Nếu không tồn tại $n\in\mathbb{N}$ sao cho 
+    $c=\mathrm{succ}(n)$, thì $c$ là một tập con quy nạp của $\mathbb{N}$, và do đó $c=\mathbb{N}$, kéo theo $a=b=\mathbb{N}$, mâu thuẫn vì $a\notin a=\mathbb{N}$. Vậy $c\in\mathbb{N}$. 
+    Từ định nghĩa của $c$, ta có hoặc $c=a$, hoặc $c=b$. Điều đó có nghĩa là hoặc $a\subseteq b$, hoặc $b\subseteq a$. Ta có kết luận.
+  </p>
+
+  <p>
+    Như vậy, chứng minh tính phổ dụng ở phần trước đã được làm rõ. Ta đến với một tính chất cực kỳ quan trọng khác của $\mathbb{N}$, thường được gọi là
+  </p>
+
+  <div class="theorem">
+    <div class="theorem-title">Nguyên lý cực hạn (Tính sắp thứ tự tốt - Well-Ordering Principle)</div>
+    <div class="theorem-body">
+      Mỗi tập con không rỗng của $\mathbb{N}$ đều có phần tử nhỏ nhất.
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+      Giả sử tồn tại tập con khác rỗng $S$ của $\mathbb{N}$ mà không có phần tử nhỏ nhất. Đặt $\mathbb{N}\setminus S=:T$. Ta chứng minh rằng với mỗi $n\in\mathbb{N}$, ta có $n\in T$ và mỗi 
+      phần tử của $S$ đều lớn hơn hẳn $n$. Nếu $0\in S$, thì tồn tại $s\in S$ sao cho $s\lt 0$, mâu thuẫn. Do đó $0\in T$, và do đó mỗi phần tử của $S$ đều lớn hơn hẳn $0$.
+      <br> Giả sử $n\in T$ và mỗi phần tử của $S$ đều lớn hơn hẳn $n$. Nếu $\mathrm{succ}(n)\in S$, thì tồn tại $s\in S$ sao cho $s<\mathrm{succ}(n)$, hay là $s\leq n$, mâu thuẫn. Do đó 
+      $\mathrm{succ}(n)\in T$, và do đó mỗi phần tử của $S$ đều lớn hơn hẳn $\mathrm{succ}(n)$. Theo nguyên lý quy nạp, ta có $T=\mathbb{N}$, mâu thuẫn vì $S$ không rỗng. Vậy $S$ phải có phần 
+      tử nhỏ nhất.
+    </div>
+  </details>
+
+  <h2>Các phép toán trên $\mathbb{N}$</h2>
+
+  <p>
+    Giả sử bạn cần đếm rất nhiều táo, nhưng bạn lại không có đủ thời gian để đếm từng quả một. Bạn nảy ra một ý tưởng thiên tài: rủ một người bạn của bạn đếm một phần táo, còn bạn đếm phần 
+    còn lại. Sau khi đếm xong, bạn cần phải tìm cách để cộng hai con số lại.
+  </p>
+
+  <p>
+    Như vậy, bạn cần một phép toán cộng trên $\mathbb{N}$, tức là một ánh xạ $+:\mathbb{N}\times\mathbb{N}\to\mathbb{N}$, hay nói cách khác là một ánh xạ 
+    $+:\mathbb{N}\to(\mathbb{N}\to\mathbb{N})$. Vẫn câu hỏi cũ: <b>Bạn muốn điều gì ở phép cộng?</b> 
+    <br> Bạn sẽ muốn phép cộng có tính kết hợp:
+    $$\forall a,b,c\in\mathbb{N}, (a+b)+c = a+(b+c),$$
+    hay chính xác hơn là $$\forall a,b,c\in\mathbb{N}, +(+(a)(b))(c) = +(a)(+(b)(c)).$$
+    Điều này rất hợp lý, vì cuối cùng thì số táo của bạn sẽ không thay đổi dù bạn đếm rồi cộng theo cách nào đi nữa. Vì số $0$ tượng trưng cho "không có gì", bạn sẽ muốn tính trung hòa:
+    $$\forall a\in\mathbb{N},+(0)(a)=+(a)(0)=a.$$
+    Bạn cũng sẽ muốn phép cộng có tính giao hoán:
+    $$\forall a,b\in\mathbb{N}, +(a)(b) = +(b)(a),$$
+    vì cuối cùng thì số táo của bạn sẽ không thay đổi dù bạn đếm phần nào trước đi nữa.
+    Được rồi, đã đến lúc bắt tay vào xây dựng phép cộng. Từ phần trước, ta đã có thể định nghĩa một cách truy hồi mà không gặp phải vấn đề gì, do đó ta sẽ bắt đầu với $+(0)$.
+    Vì ta muốn có tính trung hòa nên lựa chọn duy nhất là $+(0)=\mathrm{id}_{\mathbb{N}}$. Một khi đã có $+(n)$ rồi, ta có thể định nghĩa $+(\mathrm{succ}(n))$ như sau:
+    $$+(\mathrm{succ}(n))(m) := \mathrm{succ}(+(n)(m)).$$
+    Bạn có thể tự hỏi tại sao ta lại làm vậy. Nếu phép cộng có tính kết hợp, ít nhất nó cũng nên thỏa mãn với $a=1$ chứ.
+  </p>
+
+  <p>
+    Ta đã có một thứ được gọi là "phép cộng". Giờ thì ta cần phải chỉ ra rằng nó thỏa mãn tất cả các tính chất được nêu ở trên. Với công cụ quy nạp ở trong tay, bạn đọc hoàn toàn có thể tự 
+    mình chứng minh chúng.
+  </p>
+
+  <p>
+    Một cách tương tự, ta có thể định nghĩa phép nhân bằng cách cho $\times(0)$ là ánh xạ hằng $0$ và
+    $$\times(\mathrm{succ}(n))(m) := +( \times(n)(m) )(m).$$
+    Không khó để bạn đọc chứng minh rằng phép nhân của ta thỏa mãn tính kết hợp, trung hòa với phần tử $1$, tính giao hoán, và tính phân phối với phép cộng. Giờ ta sẽ phát biểu các tính 
+    chất quan trọng khác của $\mathbb{N}$, từ đó chứng minh rằng phép cộng và phép nhân của ta đều "tương thích" với quan hệ thứ tự trên $\mathbb{N}$.
+  </p>
+
+  <div class="theorem">
+    <div class="theorem-title">Mệnh đề</div>
+    <div class="theorem-body">
+      Với $a,b\in\mathbb{N}$, nếu $a\leq b$ thì tồn tại duy nhất $c\in\mathbb{N}$ sao cho $a+c=b$. Do đó, từ giờ ta sẽ ký hiệu nó là $b-a$.
+    </div>
+  </div>
+  
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+      Gọi $S:=\{x\in\mathbb{N}:a+x\geq b\}$. Khi đó $b\in S$ nên $S$ không rỗng, và do đó có phần tử nhỏ nhất $c$. Nếu $c=0$ thì $a\geq b$, suy ra $b=a=a+0=a+c$. Giả sử $c>0$. Khi đó tồn tại
+      $d\in\mathbb{N}$ sao cho $c=\mathrm{succ}(d)$. Vì $c$ là phần tử nhỏ nhất của $S$, ta có $a+d\notin S$, tức là
+      $$a+d\lt b \leq a+c = a+\mathrm{succ}(d) = \mathrm{succ}(a+d).$$
+      Điều này chỉ xảy ra khi $a+c = b$.
+      <br> Giờ giả sử $b = a + c_{1} = a + c_{2}$, với $c_{1}, c_{2}\in\mathbb{N}$. Nếu $c_{1}\lt c_{2}$ thì tồn tại $x\in\mathbb{N}$ sao cho 
+      $c_{2} = c_{1} + x$. Khi đó $x > 0$ và $b = a + c_{2} = a + c_{1} + x = b + x > b$, mâu thuẫn. Tương tự, nếu $c_{2}\lt c_{1}$ thì cũng dẫn đến mâu thuẫn. Do đó, $c_{1} = c_{2}$.
+    </div>
+  </details>
+
+  <div class="theorem">
+    <div class="theorem-title">Mệnh đề</div>
+    <div class="theorem-body">
+      Với $a,b,c\in\mathbb{N}$, nếu $a\lt b$ thì $a+c\lt b+c$ và $ac \leq bc$. Nếu $c > 0$ thì $a\lt b$ cũng kéo theo $ac\lt bc$.
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+      Ta chứng minh rằng nếu $a\lt b$ thì $a+c\lt b+c$ và $(b+c)-(a+c)=b-a$, $ac\leq bc$ và $bc-ac=(b-a)c$. Vì $a\lt b$ nên tồn tại $x\in\mathbb{N}$ sao cho $x > 0$ và $b=a+x$. Khi đó 
+      $a+c+x = a+x+c = b+c > a+c$ và $bc = (a + x)c = ac + xc \geq ac$. Vậy $(b+c)-(a+c) = b-a$ và $bc-ac=(b-a)c$.
+      Ta chứng minh rằng nếu $c > 0$ và $x > 0$ thì $xc > 0$. Gọi $d\in\mathbb{N}$ sao cho $c=\mathrm{succ}(d)$. Khi đó $xc = x\mathrm{succ}(d) = x + xd > 0$. Suy ra 
+      $bc-ac = (b-a)c > 0$, tức là $ac\lt bc$.
+    </div>
+  </details>
+
+  <p>
+    Như vậy, ta đã đi một đoạn đường dài để xây dựng tập hợp các số tự nhiên $\mathbb{N}$ cùng với các cấu trúc của nó.
+    <br> Theo tôi, những từ khóa quan trọng nhất của $\mathbb{N}$ mà các bạn nên nhớ là: <b>phổ dụng</b>, <b>quy nạp</b>, và <b>cực hạn</b>.
+  </p>
+
+  <h4>Tiếp theo</h4>
+  <a href="Z.html">Nguồn gốc của các con số. Phần 2: Dấu âm</a>
+
+</div>
+<script src="../assets/script.js"></script>
+
+</body>
+</html>

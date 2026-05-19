@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Cấu trúc trơn</title>
+
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/index.min.css">
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$']],
+    displayMath: [['$$', '$$']]
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+
+<button class="toggle" onclick="toggleDark()" id="themeBtn"></button>
+<button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+<div class="sidebar">
+  <a href="../index.html">🏠 Trang chính</a>
+  <h2>Tags</h2>
+  <a href="../basics.html">Kiến thức cơ bản</a>
+  <a href="../calulus_on_manifolds.html">Giải tích trên đa tạp</a>
+</div>
+
+<div class="content">
+  <h1>Cấu trúc trơn</h1>
+
+  <p>
+    Trong bài viết này, ta bắt tay vào thêm các tính chất để một đa tạp tôpô trở thành một đa tạp trơn, và hơn nữa là định nghĩa khái niệm ánh xạ trơn giữa hai đa tạp trơn.
+  </p>
+
+  <h2>Các định nghĩa</h2>
+
+  <div class="definition">
+    <div class="def-title">Tương thích trơn</div>
+    <div class="def-body">
+      Cho $M$ là một đa tạp tôpô $n$ chiều. Nếu $(U,\varphi)$ và $(V,\psi)$ là hai bản đồ thỏa mãn $U\cap V\neq\varnothing$, ánh xạ hợp 
+      $\psi\circ\varphi^{-1}:\varphi(U\cap V)\to\psi(U\cap V)$ được gọi là <b>ánh xạ chuyển</b> từ $\varphi$ sang $\psi$. Vì ánh xạ chuyển là hợp thành của hai đồng phôi nên bản thân nó 
+      là một đồng phôi. Hai bản đồ $(U,\varphi)$ và $(V,\psi)$ được gọi là <b>tương thích trơn</b> nếu hoặc là $U\cap V=\varnothing$, hoặc là ánh xạ chuyển từ $\varphi$ sang $\psi$ là 
+      trơn. Vì $\varphi(U\cap V)$ và $\psi(U\cap V)$ là hai tập mở của $\mathbb{R}^{n}$ nên tính trơn của ánh xạ chuyển được định nghĩa tốt.
+    </div>
+  </div>
+
+  <div class="definition">
+    <div class="def-title">Atlas</div>
+    <div class="def-body">
+      Một <b>atlas</b> của đa tạp tôpô $M$ là một họ $\mathcal{A}$ các bản đồ phủ $M$. Họ $\mathcal{A}$ được gọi là <b>trơn</b> nếu hai bản đồ bất kỳ trong $\mathcal{A}$ là tương thích 
+      trơn. Nếu tất cả các bản đồ của $M$ mà tương thích với mọi bản đồ trong $\mathcal{A}$ đều nằm trong $\mathcal{A}$, ta nói $\mathcal{A}$ là <b>cực đại</b> (hoặc là <b>đầy đủ</b>).
+    </div>
+  </div>
+
+  <div class="definition">
+    <div class="def-title">Đa tạp trơn</div>
+    <div class="def-body">
+      Một <b>cấu trúc trơn</b> trên $M$ là một atlas trơn cực đại của $M$. Một <b>đa tạp trơn</b> là một cặp $(M,\mathcal{A})$, trong đó $M$ là một đa tạp tôpô và $\mathcal{A}$ là một cấu 
+      trúc trơn trên $M$.
+    </div>
+  </div>
+
+  <p>
+    Nói chung, rất khó để định nghĩa một cấu trúc trơn bằng cách mô tả tường minh atlas trơn cực đại, vì một atlas có thể chứa rất nhiều bản đồ. May mắn thay, ta chỉ cần chỉ ra một số đa 
+    tạp trơn.
+  </p>
+
+  <div class="theorem">
+    <div class="theorem-title">Mệnh đề</div>
+    <div class="theorem-body">
+      Cho $M$ là một đa tạp tôpô. Khi đó:
+      <ol>
+        <li>mỗi atlas trơn $\mathcal{A}$ của $M$ đều chứa trong một cấu trúc trơn duy nhất, được gọi là <b>cấu trúc trơn xác định bởi</b> $\mathcal{A}$;</li>
+        <li>hai atlas trơn trên $M$ xác định cùng một cấu trúc trơn khi và chỉ khi hợp của chúng là một atlas trơn.</li>
+      </ol>
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+      <ol>
+        <li>
+          Với mỗi atlas trơn $\mathcal{A}$, gọi $\overline{\mathcal{A}}$ là tập hợp tất cả các bản đồ của $M$ mà tương thích trơn với mọi bản đồ trong $\mathcal{A}$. Ta cần chứng minh 
+          $\overline{\mathcal{A}}$ là một atlas trơn cực đại. Xét hai bản đồ $(U,\varphi)$ và $(V,\psi)$ trong $\overline{\mathcal{A}}$ thỏa mãn $U\cap V=\varnothing$. Lấy $p\in U\cap V$  
+          bất kỳ và đặt $\varphi(p)=:x\in\varphi(U\cap V)$. Khi đó tồn tại một bản đồ $(W,\theta)$ của $M$ trong $\mathcal{A}$ chứa $p$. Vì $(U,\varphi)$ và $(V,\psi)$ thuộc 
+          $\overline{\mathcal{A}}$ nên chung tương thích trơn với $(W,\theta)$, suy ra $\theta\circ\varphi^{-1}$ và $\psi\circ\theta^{-1}$ là trơn. Vì $p\in U\cap V\cap W$ nên ta có 
+          $\psi\circ\varphi^{-1}=\left(\psi\circ\theta^{-1}\right)\circ\left(\psi\circ\theta^{-1}\right)$ là trơn trên một lân cận của $x$. Vì $x$ chạy khắp $\varphi(U\cap V)$ nên ta có 
+          $\psi\circ\varphi^{-1}$ là trơn trên $\varphi(U\cap V)$, suy ra $\overline{\mathcal{A}}$ là trơn.
+          <br> Mỗi bản đồ tương thích trơn với mọi bản đồ trong $\overline{\mathcal{A}}$ thì cũng tương thích trơn với mọi bản đồ trong $\mathcal{A}$, và do đó nằm trong 
+          $\overline{\mathcal{A}}$, suy ra $\overline{\mathcal{A}}$ là cực đại.
+          <br> Giả sử $\mathcal{B}$ là một cấu trúc trơn chứa $\mathcal{A}$. Khi đó theo định nghĩa của $\overline{\mathcal{A}}$, ta phải có $\mathcal{B}\subseteq\overline{\mathcal{A}}$, 
+          suy ra $\mathcal{B}=\overline{\mathcal{A}}$.
+        </li>
+        <li>
+          Ta có $\overline{\mathcal{A}}=\overline{\mathcal{B}}$ khi và chỉ khi mỗi bản đồ trong $\mathcal{A}$ tương thích trơn với mọi bản đồ của $\mathcal{B}$, tức là 
+          $\mathcal{A}\cup\mathcal{B}$ là một atlas trơn.
+        </li>
+      </ol>
+    </div>
+  </details>
+
+  <h2>Biểu diễn tọa độ địa phương</h2>
+
+  <div class="definition">
+    <div class="def-title">Bản đồ trơn</div>
+    <div class="def-body">
+      Cho đa tạp trơn $M$. Khi đó mỗi bản đồ $(U,\varphi)$ nằm trong cấu trúc trơn của $M$ được gọi là một <b>bản đồ trơn</b>, và ánh xạ tọa độ tương ứng $\varphi$ được gọi là một <b> ánh 
+      xạ tọa độ trơn</b>. Ta cũng sẽ sử dụng các thuật ngữ <b>miền tọa độ trơn</b> hay <b>lân cận tọa độ trơn</b> cho miền $U$ của bản đồ trơn $(U,\varphi)$. Một <b>quả cầu tọa độ trơn</b> 
+      là một miền tọa độ trơn mà ảnh của nó qua một ánh xạ tọa độ trơn là một quả cầu mở trong không gian Euclid. Các thuật ngữ như <b>khối vuông tọa độ trơn</b> được định nghĩa tương tự.
+    </div>
+  </div>
+
+  <h2>Một số ví dụ về đa tạp trơn</h2>
+
+  <div class="definition">
+    <div class="def-title">Ví dụ</div>
+    <div class="def-body">
+      Xét đồng phôi $\psi:\mathbb{R}\to\mathbb{R}$ được cho bởi $\psi(x)=x^{3}$. Atlas chứa một bản đồ duy nhất $(\mathbb{R},\psi)$ xác định duy nhất một cấu trúc trơn trên $\mathbb{R}$. 
+      Bản đồ này không tương thích trơn với cấu trúc trơn tiêu chuẩn, vì ánh xạ chuyển $\left(\mathrm{id}_{\mathbb{R}}\circ\psi^{-1}\right)(y)=\sqrt[3]{y}$ không trơn tại gốc tọa độ.
+    </div>
+  </div>
+
+  <div class="definition">
+    <div class="def-title">Ví dụ</div>
+    <div class="def-body">
+      $\mathbb{S}^{n}$ với cấu trúc trơn xác định bởi $2n+2$ bản đồ $U_{i}^{\pm}$ là một đa tạp trơn.
+    </div>
+  </div>
+
+  <div class="definition">
+    <div class="def-title">Ví dụ</div>
+    <div class="def-body">
+      Cho $V$ là một không gian vector thực $n$ chiều. Mỗi chuẩn trên $V$ xác định một tôpô, và tôpô đó không phụ thuộc vào việc chọn chuẩn. Với tôpô này, $V$ là một đa tạp tôpô $n$ 
+      chiều, và có cấu trúc trơn tự nhiên được xác định như sau: mỗi cơ sở $(E_{1},\ldots,E_{n})$ của $V$ xác định một đẳng cấu tuyến tính $E:\mathbb{R}^{n}\to V$. Ánh xạ $E$ cũng là một 
+      đồng phôi, do đó $\left(V,E^{-1}\right)$ là một bản đồ. Nếu ta lấy một cơ sở khác thì ma trận chuyển cơ sở chính là ánh xạ chuyển giữa hai bản đồ. Cấu trúc trơn này được gọi là <b>
+      cấu trúc trơn tiêu chuẩn</b> trên $V$.
+    </div>
+  </div>
+
+  <div class="definition">
+    <div class="def-title">Ví dụ</div>
+    <div class="def-body">
+      Nhóm tuyến tính tổng quát $\mathrm{GL}_{n}(\mathbb{R})$ là một tập con mở của $\mathrm{Mat}_{n}(\mathbb{R})$, một không gian vector $n^{2}$ chiều, nên nó là một đa tạp trơn $n$ chiều.
+    </div>
+  </div>
+
+  <div class="definition">
+    <div class="def-title">Ví dụ</div>
+    <div class="def-body">
+      Giả sử $U$ là một tập con mở của $\mathbb{R}^{n}$ và $\Phi:U\to\mathbb{R}$ là một hàm trơn. Với mỗi $c\in\mathbb{R}, tập hợp $\Phi^{-1}(c)$ được gọi là <b>tập mức</b> của $\Phi$. Chọn 
+      $c\in\mathbb{R}$ và đặt $\Phi^{-1}(c)=:M$ và giả sử rằng đạo ánh $D\Phi(a)$ là khác không với mỗi $a\in M$. Vì $D\Phi(a)$ là một ma trận hàng với các thành phần là các đạo hàm riêng 
+      tại $a$ nên với mỗi $a\in M$, tồn tại một chỉ số $i_{a}$ sao cho $\partial_{i}\Phi(a)\neq 0$. Theo định lý hàm ẩn, có một lân cận mở $U_{a}$ của $a$ sao cho $M\cap U_{0}$ là đồ thị của 
+      một phương trình dạng $$X_{i_{a}}=f\left(X_{1},\ldots,\widehat{X_{i_{a}}},\ldots,X_{n}\right),$$
+      với $f$ là một hàm trơn xác định trên một tập mở của $\mathbb{R}^{n-1}$. Do đó $M$ là một đa tạp trơn $n-1$ chiều.
+    </div>
+  </div>
+
+  <div class="definition">
+    <div class="def-title">Ví dụ</div>
+    <div class="def-body">
+      Tích của các đa tạp trơn $M_{j}$, với $j=1,\ldots,k$, là một đa tạp trơn, vì ta có
+      $$(\psi_{1}\times\cdots\times\psi_{k})\circ(\varphi_{1}\times\cdots\times\varphi_{k})^{-1}=\left(\psi_{1}\circ\varphi_{1}^{-1}\right)\times\cdots\times\left(\psi_{k}\circ
+      \varphi_{k}^{-1}\right).$$
+    </div>
+  </div>
+
+  <p>
+    Mỗi ví dụ ta thấy ở đây đều bắt đầu bằng một không gian tôpô và kiểm tra rằng nó là một đa tạp tôpô, sau đó ta chỉ ra cấu trúc trơn của nó. Sẽ tiện lợi hơn nếu ta có thể kết hợp cả hai 
+    bước này làm một xây dựng duy nhất, đặc biệt là khi ta bắt đầu với một tập hợp nền. Bổ đề sau đây cho ta một con đường tắt - nó chỉ cho ta cách biến một tập hợp với các "bản đồ" phù 
+    hợp chồng lên nhau một cách trơn thành một đa tạp trơn.
+  </p>
+
+  <div class="theorem">
+    <div class="theorem-title">Bổ đề bản đồ đa tạp trơn</div>
+    <div class="theorem-body">
+      Cho tập hợp $M$, và giả sử rằng ta có một họ $\{U_{\alpha}\}$ các tập con của $M$ cùng với các ánh xạ $\varphi_{\alpha}:U_{\alpha}\to\mathbb{R}^{n}$, sao cho các điều kiện sau được 
+      thỏa mãn:
+      <ol>
+        <li>với mỗi $\alpha$, $\varphi_{\alpha}$ là một song ánh giữa $U_{\alpha}$ và một tập mở $\varphi_{\alpha}(U_{\alpha})$ của $\mathbb{R}^{n}$;</li>
+        <li>với mỗi $\alpha$ và $\beta$, các tập hợp $\varphi_{\alpha}(U_{\alpha}\cap U_{\beta})$ và $\varphi_{\beta}(U_{\alpha}\cap U_{\beta})$ là mở trong $\mathbb{R}^{n}$;</li>
+        <li>nếu $U_{\alpha}\cap U_{\beta}\neq\varnothing$ thì ánh xạ $\varphi_{\beta}\circ\varphi_{\alpha}^{-1}:\varphi_{\alpha}(U_{\alpha}\cap U_{\beta})\to
+        \varphi_{\beta}(U_{\alpha}\cap U_{\beta})$ là trơn;</li>
+        <li>có đếm được các tập $U_{\alpha}$ phủ $M$;</li>
+        <li>nếu $p,q$ là các điểm phân biệt của $M$, hoặc có một tập hợp $U_{\alpha}$ chứa cả $p$ và $q$, hoặc tồn tại hai tập hợp $U_{\alpha}$ và $U_{\beta}$ rời nhau thỏa mãn 
+        $p\in U_{\alpha}$ và $q\in U_{\beta}$.</li>
+      </ol>
+      Khi đó $M$ có duy nhất một cấu trúc trơn sao cho mỗi $(U_{\alpha},\varphi_{\alpha})$ là một bản đồ trơn.
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+      Ta định nghĩa tôpô trên $M$ bằng cách lấy tất cả các tập hợp dạng $\varphi_{\alpha}^{-1}(V)$, với $V$ là một tập mở trong $\mathbb{R}^{n}$, làm cơ sở. Để chứng minh rằng đây thực sự 
+      là một cơ sở cho một tôpô, ta cần chỉ ra rằng nếu $p\in\varphi_{\alpha}^{-1}(U)\cap\varphi_{\beta}^{-1}(V)$ thì tồn tại $\varphi_{\gamma}^{-1}(W)$ sao cho 
+      $p\in\varphi_{\gamma}^{-1}(W)\subseteq\varphi_{\alpha}^{-1}(U)\cap\varphi_{\beta}^{-1}(V)$. Ta chỉ ra chính tập hợp $\varphi_{\alpha}^{-1}(U)\cap\varphi_{\beta}^{-1}(V)$ là tập hợp 
+      cần tìm. Từ ý 3, ta có $T:=\left(\varphi_{\beta}\circ\varphi_{\alpha}^{-1}\right)^{-1}(V)$ là một tập con mở của $\varphi_{\alpha}(U_{\alpha}\cap U_{\beta})$, và từ ý 2 ta có $T$ cũng 
+      là một tập con mở của $\mathbb{R}^{n}$. Do đó
+      $$\varphi_{\alpha}^{-1}(U)\cap\varphi_{\beta}^{-1}(V)=\varphi_{\alpha}^{-1}\left[V\cap\left(\varphi_{\beta}\circ\varphi_{\alpha}^{-1}\right)^{-1}(W)\right]$$
+      cũng là một tập cơ sở.
+      <br> Mỗi $\varphi_{\alpha}$ bây giờ là một đồng phôi vào ảnh của nó, suy ra $M$ là Euclid địa phương với số chiều $n$. Tính Hausdorff được suy ra dễ dàng từ ý 5, và tính đếm được thứ 
+      hai được suy ra từ ý 4 và việc mỗi $U_{\alpha}$ là đếm được thứ hai. Cuối cùng, ý 3 đảm bảo rằng họ $\{(U_{\alpha},\varphi_{\alpha})\}$ là một atlas trơn. Từ đây dễ dàng suy ra tồn 
+      tại duy nhất cấu trúc trơn thỏa mãn các điều kiện của bổ đề.
+    </div>
+  </details>
+
+  <h4>Trước đó</h4>
+  <a href="topological_manifolds.html">Đa tạp tôpô</a>
+
+  <h4>Tiếp theo</h4>
+  <a href="manifolds_with_boundary.html">Đa tạp có biên</a>
+
+</div>
+
+<script src="../assets/script.js"></script>
+
+</body>
+
+</html>

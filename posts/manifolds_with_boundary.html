@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Đa tạp với biên</title>
+
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/index.min.css">
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$']],
+    displayMath: [['$$', '$$']]
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+
+<button class="toggle" onclick="toggleDark()" id="themeBtn"></button>
+<button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+<div class="sidebar">
+  <a href="../index.html">🏠 Trang chính</a>
+  <h2>Tags</h2>
+  <a href="../basics.html">Kiến thức cơ bản</a>
+  <a href="../calulus_on_manifolds.html">Giải tích trên đa tạp</a>
+</div>
+
+<div class="content">
+  <h1>Đa tạp với biên</h1>
+
+  <p>
+    Trong nhiều ứng dụng thực tiễn quan trọng của đa tạp, phần lớn chúng liên quan đến tích phân, ta phải đối mặt với các không gian sẽ là các đa tạp trơn, chỉ trừ việc chúng "có biên" 
+    theo nghĩa nào đó. Các ví dụ đơn giản về các không gian như vậy bao gồm các khoảng đóng trong $\mathbb{R}$, các quả cầu đóng trong $\mathbb{R}^{n}$, và các bán cầu đóng trong 
+    $\mathbb{S}^{n}$. Ta cần mở rộng định nghĩa đa tạp để bao hàm thêm các không gian này.
+    <br> Các điểm trong các không gian này sẽ có các lân cận được chọn để hoặc là tập mở của $\mathbb{R}^{n}$, hoặc là các tập mở của <b>nửa không gian trên đóng $n$ chiều</b> 
+    $\mathbb{H}^{n}\subseteq\mathbb{R}^{n}$, được định nghĩa là
+    $$\mathbb{H}^{n}:=\{(X_{1},\ldots,X_{n})\in\mathbb{R}^{n}:X_{n}\geq 0\}.$$
+    Ta sẽ dùng các ký hiệu $\mathrm{Int}\left(\mathbb{H}^{n}\right)$ và $\partial\mathbb{H}^{n}$ để chỉ lần lượt phần trong và biên của $\mathbb{H}^{n}$, như một tập con 
+    của $\mathbb{R}^{n}$.
+  </p>
+
+  <h2>Các định nghĩa</h2>
+
+  <div class="definition">
+    <div class="def-title">Đa tạp với biên</div>
+    <div class="def-body">
+        Một <b>đa tạp với biên</b> $n$ chiều là một không gian tôpô đếm được thứ hai và Hausdorff $M$ mà mỗi điểm có một lân cận đồng phôi với hoặc là một tập mở của $\mathbb{R}^{n}$, hoặc 
+        là một tập mở của $\mathbb{H}^{n}$. Một tập mở $U$ của $M$ cùng với một ánh xạ $\varphi:U\to\mathbb{R}^{n}$ là một đồng phôi vào một tập mở của $\mathbb{R}^{n}$ hoặc 
+        $\mathbb{H}^{n}$ được gọi là một <b>bản đồ</b> của $M$. Khi ta cần phải phân biệt, ta gọi $(U,\varphi)$ là một <b>bản đồ trong</b> nếu $\varphi(U)$ là một tập con mở của 
+        $\mathbb{R}^{n}$, và một <b>bản đồ biên</b> nếu $\varphi(U)$ là một tập con mở của $\mathbb{H}^{n}$ sao cho $\varphi(U)\cap\partial\mathbb{H}^{n}\neq\varnothing$. Một bản đồ biên 
+        mà ảnh của nó có dạng $B_{r}(x)\cap\mathbb{H}^{n}$ với $x\in\partial\mathbb{H}^{n}$ và $r>0$ được gọi là một <b>bán cầu tọa độ</b>.
+        <br> Một điểm $p\in M$ được gọi là một <b>điểm trong</b> của $M$ nếu nó thuộc một bản đồ trong và được gọi là <b>điểm biên</b> của $M$ nếu nó nằm trong một bản đồ biên gửi $p$ 
+        sang một điểm thuộc $\partial\mathbb{H}^{n}$. Tập hợp các điểm biên của $M$ được gọi là <b>biên</b> của $M$ và được ký hiệu là $\partial M$. Tương tự, ta có định nghĩa 
+        <b>phần trong</b> của $M$, được ký hiệu bởi $\mathrm{Int}(M)$.
+    </div>
+  </div>
+
+  <p>
+    Ta tạm thừa nhận định lý sau:
+  </p>
+
+  <div class="theorem">
+    <div class="theorem-title">Định lý bất biến tôpô của biên</div>
+    <div class="theorem-body">
+        Nếu $M$ là một đa tạp tôpô có biên thì $M=\mathrm{Int}(M)\sqcup\partial M$.
+    </div>
+  </div>
+
+  <p>
+    Hãy phân biệt rõ ràng khái niệm biên thông thường và khái niệm biên mới này. Một đa tạp với biên có thể có biên khác rỗng theo nghĩa mới, không cần biết nó có biên như một tập con 
+    của một không gian tôpô khác hay không. Nếu ta cần phải nhấn mạnh sự khác biệt giữa hai khái niệm này, ta sẽ dùng hai thuật ngữ <b>biên tôpô</b> và <b>biên đa tạp</b> cho phù hợp. 
+    Ví dụ, quả cầu đóng đơn vị $\mathbb{B}^{n+1}$ là một đa tạp với biên, với biên đa tạp là $\mathbb{S}^{n}$. Biên tôpô của nó như một tập con của $\mathbb{R}^{n}$ cũng là 
+    $\mathbb{S}^{n}$. Tuy nhiên, nếu ta coi $\mathbb{B}^{n+1}$ là một không gian con của chính nó thì nó lại có biên tôpô là rỗng.
+  </p>
+
+  <div class="theorem">
+    <div class="theorem-title">Mệnh đề</div>
+    <div class="theorem-body">
+        Cho $M$ là một đa tạp với biên có số chiều $n$. Khi đó:
+        <ol>
+            <li>$\mathrm{Int}(M)$ là một tập con mở của $M$ và là một đa tạp tôpô $n$ chiều;</li>
+            <li>$\partial M$ là một tập con đóng của $M$ và là một đa tạp tôpô $n-1$ chiều;</li>
+            <li>$M$ là một đa tạp tôpô khi và chỉ khi $\partial M=\varnothing$.</li>
+        </ol>
+    </div>
+  </div>
+
+  Giống như với đa tạp thông thường, ta cũng có kết quả sau:
+
+  <div class="theorem">
+    <div class="theorem-title">Mệnh đề</div>
+    <div class="theorem-body">
+        Cho $M$ là một đa tạp với biên. Khi đó:
+        <ol>
+            <li>$M$ có một cơ sở đếm được gồm các quả cầu và bán cầu compact tương đối;</li>
+            <li>$M$ là compact địa phương;</li>
+            <li>$M$ là liên thông đường địa phương;</li>
+            <li>$M$ có đếm được thành phần liên thông, mỗi thành phần là một tập con mở của $M$ và là một đa tạp tôpô liên thông với biên.</li>
+        </ol>
+    </div>
+  </div>
+
+  <h2>Cấu trúc trơn trên đa tạp với biên</h2>
+
+  <h4>Trước đó</h4>
+  <a href="smooth_structures.html">Cấu trúc trơn</a>
+
+  <!-- <h4>Tiếp theo</h4>
+  <a></a> -->
+
+
+</div>
+
+<script src="../assets/script.js"></script>
+
+</body>
+
+</html>

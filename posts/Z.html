@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Nguồn gốc của các con số. Phần 2: Dấu âm</title>
+
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/index.min.css">
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$']],
+    displayMath: [['$$', '$$']]
+  }
+};
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+
+<button class="toggle" onclick="toggleDark()" id="themeBtn"></button>
+<button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+<div class="sidebar">
+  <a href="../index.html">🏠 Trang chính</a>
+  <h2>Tags</h2>
+  <a href="../basics.html">Kiến thức cơ bản</a>
+  <a href="../calulus_on_manifolds.html">Giải tích trên đa tạp</a>
+</div>
+
+<div class="content">
+  <h1>Nguồn gốc của các con số <br> Phần 2: Dấu âm</h1>
+
+  <p>
+    Ta có thể làm rất nhiều thứ với các số tự nhiên: cộng, nhân, so sánh, và đôi khi là trừ nữa! Nhưng đôi khi bạn không thể thực hiện phép trừ. Trong $\mathbb{N}$, bạn chỉ có thể đem $a$ 
+    trừ đi $b$ nếu $a\geq b$. Có một vấn đề thế này: Giả sử bạn đi mua đồ với giá $5000$ đồng, sau đó bạn bán lại với giá $10000$ đồng. Sau đó bạn tiếp tục mua đồ với giá $15000$ đồng, rồi 
+    bán lại với giá $20000$ đồng. Cứ tiếp tục làm như vậy cho đến khi bạn thấy con số $1000000$ đồng. Hỏi cuối cùng bạn lãi (hay lỗ) bao nhiêu tiền? Sẽ rất là khó chịu khi bạn phải xác định
+    trước mình lỗ hay lãi rồi mới có thể tính xem mình lỗ hay lãi bao nhiêu. Để tránh khỏi rắc rối này, bạn bổ sung thêm vào $\mathbb{N}$ các số mới có dạng $a-b$, với $a,b\in\mathbb{N}$. 
+    Giờ thì bạn có thể cộng trừ thoải mái. Để hiện thực hóa ý tưởng này, ta có thể xây dựng như sau:
+  </p>
+
+  <h2>Xây dựng vành các số nguyên $\mathbb{Z}$</h2>
+  
+  <div class="definition">
+    <div class="def-title">Định nghĩa</div>
+    <div class="def-body">
+        Trên $\mathbb{N}\times\mathbb{N}$, ta có quan hệ tương đương $\sim$ như sau: $(a,b)\sim(c,d)$ nếu và chỉ nếu $a+d=b+c$. Ta ký hiệu tập hợp thương 
+        $\mathbb{N}\times\mathbb{N}/\sim$ bởi $\mathbb{Z}$ và gọi các phần tử $[a,b]$ của nó là các <b>số nguyên</b>. Ta định nghĩa phép cộng và phép nhân trên $\mathbb{Z}$ như sau:
+        \begin{align*}
+          [a,b]+[c,d] & := [a+c,b+d], \\
+          [a,b]\cdot[c,d] & := [ac+bd,ad+bc].
+        \end{align*}
+    </div>
+  </div>
+
+  <p>
+    Tại sao ta lại định nghĩa như vậy? Hãy nhớ rằng $[a,b]$ đại diện cho $a-b$. Ta hy vọng các phép toán cộng và nhân trên $\mathbb{Z}$ cũng có các tính chất như hai phép toán trên 
+    $\mathbb{N}$, vì vậy ta nên có
+    $$(a-b)+(c-d)=(a+c)-(b+d)$$
+    và
+    $$(a-b)\cdot(c-d)=(ac+bd)-(ad+bc).$$
+  </p>
+
+  <p>
+    Phép cộng trên $\mathbb{Z}$ hiển nhiên thừa nhận tính kết hợp, trung hòa, và giao hoán từ $\mathbb{N}$. Tính giao hoán của phép nhân trên $\mathbb{Z}$ cũng là hiển nhiên. Ta chứng minh 
+    phép nhân trên $\mathbb{Z}$ thừa nhận tính kết hợp, trung hòa, và phân phối là đủ.
+  </p>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+        Lấy $[a_{i},b_{i}]\in\mathbb{Z}$ với $i=1,2,3$. Ta có
+        \begin{align*}
+            ([a_{1},b_{1}]\cdot[a_{2},b_{2}])\cdot[a_{3},b_{3}] & = [a_{1}a_{2}+b_{1}b_{2},a_{1}b_{2}+b_{1}a_{2}]\cdot[a_{3},b_{3}] \\
+            & = [(a_{1}a_{2}+b_{1}b_{2})a_{3}+(a_{1}b_{2}+b_{1}a_{2})b_{3},(a_{1}a_{2}+b_{1}b_{2})b_{3}+(a_{1}b_{2}+b_{1}a_{2})a_{3}] \\
+            & = [a_{1}a_{2}a_{3}+b_{1}b_{2}a_{3}+a_{1}b_{2}b_{3}+b_{1}a_{2}b_{3},a_{1}a_{2}b_{3}+b_{1}b_{2}b_{3}+a_{1}b_{2}a_{3}+b_{1}a_{2}a_{3}]; \\
+            [a_{1},b_{1}]\cdot([a_{2},b_{2}]\cdot[a_{3},b_{3}]) & = [a_{1},b_{1}]\cdot[a_{2}a_{3}+b_{2}b_{3},a_{2}b_{3}+b_{2}a_{3}] \\
+            & = [a_{1}(a_{2}a_{3}+b_{2}b_{3})+b_{1}(a_{2}b_{3}+b_{2}a_{3}),a_{1}(a_{2}b_{3}+b_{2}a_{3})+b_{1}(a_{2}a_{3}+b_{2}b_{3})] \\
+            & = [a_{1}a_{2}a_{3}+a_{1}b_{2}b_{3}+b_{1}a_{2}b_{3}+b_{1}b_{2}a_{3},a_{1}a_{2}b_{3}+a_{1}b_{2}a_{3}+b_{1}a_{2}a_{3}+b_{1}b_{2}b_{3}] \\
+            & = [a_{1}a_{2}a_{3}+b_{1}b_{2}a_{3}+a_{1}b_{2}b_{3}+b_{1}a_{2}b_{3},a_{1}a_{2}b_{3}+b_{1}b_{2}b_{3}+a_{1}b_{2}a_{3}+b_{1}a_{2}a_{3}].
+        \end{align*}
+        Tính kết hợp được chứng minh.
+        <br> Với mỗi $[a,b]\in\mathbb{Z}$, ta có
+        \begin{align*}
+            [a,b]\cdot[1,0] & = [a\cdot 1 + b\cdot 0, a\cdot 0 + b\cdot 1] \\
+            & = [a,b].
+        \end{align*}
+        Tính trung hòa được chứng minh.
+        <br> Ta có
+        \begin{align*}
+            [a_{1},b_{1}]\cdot([a_{2},b_{2}]+[a_{3},b_{3}]) & = [a_{1},b_{1}]\cdot[a_{2}+a_{3},b_{2}+b_{3}] \\
+            & = [a_{1}(a_{2}+a_{3})+b_{1}(b_{2}+b_{3}),a_{1}(b_{2}+b_{3})+b_{1}(a_{2}+a_{3})] \\
+            & = [a_{1}a_{2}+a_{1}a_{3}+b_{1}b_{2}+b_{1}b_{3},a_{1}b_{2}+a_{1}b_{3}+b_{1}a_{2}+b_{1}a_{3}] \\
+            & = [(a_{1}a_{2}+b_{1}b_{2})+(a_{1}a_{3}+b_{1}b_{3}),(a_{1}b_{2}+b_{1}a_{2})+(a_{1}b_{3}+b_{1}a_{3})] \\
+            & = [a_{1}a_{2}+b_{1}b_{2},a_{1}b_{2}+b_{1}a_{2}] + [a_{1}a_{3}+b_{1}b_{3},a_{1}b_{3}+b_{1}a_{3}] \\
+            & = [a_{1},b_{1}]\cdot[a_{2},b_{2}] + [a_{1},b_{1}]\cdot[a_{3},b_{3}].
+        \end{align*}
+    </div>
+  </details>
+
+  <p>
+    Từ các tính chất trên, ta thấy rằng $\mathbb{Z}$ cùng với hai phép toán cộng và nhân là một <b>vành giao hoán có đơn vị</b> (từ giờ ta sẽ gọi tắt là vành).
+  </p>
+
+  <p>
+    Để thấy rằng $\mathbb{Z}$ thực sự là một mở rộng của $\mathbb{N}$, ta đồng nhất mỗi phần tử $[n,0]\in\mathbb{Z}$ với số tự nhiên $n$. Khi đó phép cộng và phép nhân trên $\mathbb{Z}$ là
+    tương thích với phép cộng và phép nhân trên $\mathbb{N}$ mà ta đã xây dựng từ trước:
+    \begin{align*}
+        [a,0]+[b,0] & = [a+b,0], \\
+        [a,0]\cdot[b,0] & = [ab,0].
+    \end{align*}
+    Điểm ưu việt hơn của $\mathbb{Z}$ so với $\mathbb{N}$ là nó thừa nhận <b>số đối</b>. Với mỗi $[a,b]\in\mathbb{Z}$, ta có $[a,b]+[b,a]=[a+b,a+b]=0$, nghĩa là $[b,a]$ là số đối của 
+    $[a,b]$. Như vậy ta có thể định nghĩa phép trừ trên $\mathbb{Z}$ như sau: $$[a,b]-[c,d]:=[a,b]+[d,c]=[a+d,b+c].$$
+    Đặt $[0,1]=:-1$ và $(-1)\cdot a=:-a$ với mỗi $a\in\mathbb{N}$. Khi đó mỗi số nguyên $[a,b]$ có thể được viết dưới dạng $a-b$, như những gì ta muốn. Nếu $a\geq b$ thì ta có 
+    $[a,b]=[a-b,0]=a-b$, còn nếu $a\lt b$ thì ta có $[a,b]=[0,b-a]=-(b-a)$. Như vậy, ta có thể thấy $\mathbb{Z}=\mathbb{N}\cup(-\mathbb{N})$.
+  </p>
+
+  <p>
+    Giống như $\mathbb{N}$, vành $\mathbb{Z}$ cũng có tính phổ dụng.
+  </p>
+
+  <div class="theorem">
+    <div class="theorem-title">Mệnh đề</div>
+    <div class="theorem-body">
+        Với mỗi vành $R$, tồn tại duy nhất một đồng cấu vành $f:\mathbb{Z}\to R$.
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+        Rõ ràng $f:\mathbb{Z}\to R$ được cho bởi $f(n)=n\cdot 1_{R}$ là một đồng cấu vành. Ngược lại, mỗi đồng cấu vành $g:\mathbb{Z}\to R$ bắt buộc phải gửi $1$ sang $1_{R}$ nên $g$ phải 
+        gửi $n$ sang $n\cdot 1_{R}$, tức là $g=f$. Chứng minh hoàn tất.
+    </div>
+  </details>
+    
+
+  <h2>Thứ tự trên $\mathbb{Z}$</h2>
+
+  Vì ta đã coi $\mathbb{Z}$ là một mở rộng của $\mathbb{N}$, việc định nghĩa thứ tự trên $\mathbb{Z}$ trở nên rất dễ dàng:
+
+  <div class="definition">
+    <div class="def-title">Định nghĩa</div>
+    <div class="def-body">
+        Với mỗi $a,b\in\mathbb{Z}$, ta nói $a\leq b$ nếu và chỉ nếu $b-a\in\mathbb{N}$.
+    </div>
+  </div>
+
+  <p>
+    Từ định nghĩa này, ta ngay lập tức nói được nó là một quan hệ thứ tự toàn phần trên $\mathbb{Z}$. Vì $\mathbb{N}$ là đóng với phép cộng và nhân trên $\mathbb{Z}$ nên chúng tương thích 
+    với quan hệ thứ tự trên $\mathbb{Z}$.
+  </p>
+
+  <p>
+    Giống với $\mathbb{N}$, tập hợp các số nguyên $\mathbb{Z}$ cũng có tính chất "cực hạn":
+  </p>
+
+  <div class="theorem">
+    <div class="theorem-title">Mệnh đề</div>
+    <div class="theorem-body">
+        Mỗi tập con khác rỗng bị chặn dưới của $\mathbb{Z}$ đều có phần tử nhỏ nhất. Một cách tương đương, mỗi tập con khác rỗng bị chặn trên của $\mathbb{Z}$ đều có phần tử lớn nhất.
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+        Giả sử $S$ là một tập con khác rỗng của $\mathbb{Z}$ bị chặn dưới bởi $c\in\mathbb{Z}$. Đặt $\{x-c:x\in S\}=:T$. Khi đó $T$ là một tập con khác rỗng của $\mathbb{N}$ nên nó có phần 
+        tử nhỏ nhất $t$. Khi đó $t+c$ là phần tử nhỏ nhất của $S$. Chứng minh hoàn tất.
+    </div>
+  </details>
+
+  <h2>Thuật chia Euclid</h2>
+
+  <p>
+    Nhờ có cấu trúc thứ tự được thừa hưởng từ $\mathbb{N}$, $\mathbb{Z}$ còn có các tính chất đặc biệt hơn nhiều so với một vành thông thường.
+  </p>
+
+  <div class="theorem">
+    <div class="theorem-title">Mệnh đề</div>
+    <div class="theorem-body">
+        Vành $\mathbb{Z}$ là một <b>miền nguyên</b>. Tức là, nếu $a,b\in\mathbb{Z}$ thỏa mãn $ab=0$ thì $a=0$ hoặc $b=0$.
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+        Giả sử $a,b\in\mathbb{Z}$ thỏa mãn $a,b\neq 0$ và $ab=0$. Nếu $a>0$ và $b>0$, thì $ab>0$, mâu thuẫn. Nếu $a>0$ và $b\lt 0$, thì $ab\lt 0$, mâu thuẫn. 
+        Vì ta có $(-a)(-b)=ab$ nên hai trường hợp còn lại cũng dẫn đến mâu thuẫn. Vậy $a=0$ hoặc $b=0$.
+    </div>
+  </details>
+
+  <p>
+    Hơn thế nữa, $\mathbb{Z}$ còn là một <b>miền Euclid</b>. Xét ánh xạ $|\cdot|:\mathbb{Z}\to\mathbb{N}$ (được gọi là <b>giá trị tuyệt đối</b> trên $\mathbb{Z}$) được cho bởi
+    $$|n|=\begin{cases} n & \text{nếu } n\geq 0; \\ -n & \text{nếu } n\lt 0.\end{cases}$$
+  </p>
+
+  <div class="theorem">
+    <div class="theorem-title">Mệnh đề</div>
+    <div class="theorem-body">
+        Với mỗi $a,b\in\mathbb{Z}$ với $b\neq 0$, tồn tại duy nhất $q,r\in\mathbb{Z}$ sao cho $a=bq+r$ và $0\leq r<|b|$.
+    </div>
+  </div>
+
+  <p>
+    Trước khi chứng minh mệnh đề này, ta cần một công cụ nhỏ:
+  </p>
+
+  <div class="theorem">
+    <div class="theorem-title">Bổ đề</div>
+    <div class="theorem-body">
+      Với mỗi $n\in\mathbb{Z}$, ta có $n^{2}\geq n$.
+    </div>
+  </div>
+
+  <details class="solution">
+    <summary>Chứng minh bổ đề</summary>
+    <div class="solution-body">
+      Nếu $n\leq 0$ thì ta có $n^{2}=(-n)(-n)\geq 0\geq n$. Còn nếu $n>0$ thì $n\in\mathbb{N}$ nên $n\geq 1$, suy ra $n^{2}\geq n$.
+    </div>
+  </details>
+
+  Trở lại với mệnh đề của ta.
+
+  <details class="solution">
+    <summary>Chứng minh</summary>
+    <div class="solution-body">
+      Vì kết quả của định lý này không thay đổi khi ta đổi dấu $b$ nên không mất tính tổng quát, giả sử $b>0$. Xét tập hợp $S:=\{x\in\mathbb{Z}:a\geq bx\}$. Theo bổ đề trên, ta có
+      $$a=-(-a)\geq -(-a)^{2}=-a^{2}\geq -ba^{2}$$
+      nên $-a^{2}\in S$. Mặt khác, nếu $x\in S$ thì ta có $bx\leq a\leq a^{2}\leq ba^{2}$ nên $x\leq a^{2}$. Vậy $S$ là khác rỗng và bị chặn trên bởi $a^{2}$, do đó nó có phần tử lớn nhất 
+      $q$. Đặt $a-bq=:r$, khi đó $r\geq 0$. Vì $q+1\notin S$ nên $a\lt b(q+1)$, tức là $r\lt b$. Như vậy sự tồn tại của cặp $(q,r)$ đã được đảm bảo.
+      <br> Bây giờ, giả sử $a=bq_{1}+r_{1}=bq_{2}+r_{2}$. Khi đó ta có $|b|\cdot |q_{1}-q_{2}|=|b(q_{1}-q_{2})|=|r_{1}-r_{2}|\lt |b|$ nên $|q_{1}-q_{2}|\lt 1$. Điều này chỉ xảy ra khi 
+      $q_{1}=q_{2}$, từ đó ta cũng có $r_{1}=r_{2}$. Chứng minh hoàn tất.
+    </div>
+  </details>
+
+  <p>
+    Quá trình tìm ra cặp $(q,r)$ ở trên được gọi là <b>thuật chia Euclid</b>. Nhờ có nó, $\mathbb{Z}$ có rất nhiều tính chất số học đẹp đẽ sẽ được đề cập ở mục Lý thuyết số.
+  </p>
+
+  <h4>Trước đó</h4>
+  <a href="N.html">Nguồn gốc của các con số. Phần 1: Làm thế nào để đếm?</a>
+
+  <h4>Tiếp theo</h4>
+  <a href="Q.html">Nguồn gốc của các con số. Phần 3: Chia quẩy</a>
+
+</div>
+<script src="../assets/script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,267 @@
+:root {
+  --bg: #ffffff;
+  --text: #202122;
+  --accent: #0645ad;
+  --border: #a2a9b1;
+  --sidebar-bg: #f8f9fa;
+}
+
+.dark {
+  --bg: #0f172a;
+  --text: #e2e8f0;
+  --accent: #60a5fa;
+  --border: #334155;
+  --sidebar-bg: #020617;
+}
+
+body {
+  margin: 0;
+  font-family: "CMU Serif", serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  position: fixed;
+  padding: 15px;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border);
+}
+
+.sidebar a {
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  margin: 6px 0;
+}
+
+.sidebar a:hover {
+  color: var(--accent);
+}
+
+/* Content */
+.content {
+  margin-left: 280px;
+  padding: 40px;
+  max-width: 800px;
+  border-right: 1px solid var(--border);
+}
+
+h1 {
+  border-bottom: 1px solid var(--border);
+}
+
+h2 {
+  border-bottom: 1px solid var(--border);
+}
+
+/* Khung */
+.axiom {
+  border-left: 4px solid var(--accent);
+  background: rgba(127,127,127,0.08);
+  padding: 10px 12px;
+  margin: 16px 0;
+  border-radius: 6px;
+}
+
+/* Tiêu đề */
+.axiom-title {
+  font-weight: bold;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+/* Nội dung */
+.axiom-body {
+  line-height: 1.6;
+}
+
+/* Khung */
+.definition {
+  border-left: 4px solid var(--accent);
+  background: rgba(127,127,127,0.08);
+  padding: 10px 12px;
+  margin: 16px 0;
+  border-radius: 6px;
+}
+
+/* Tiêu đề */
+.def-title {
+  font-weight: bold;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+/* Nội dung */
+.def-body {
+  line-height: 1.6;
+}
+
+/* Khung */
+.theorem {
+  border-left: 4px solid var(--accent);
+  background: rgba(127,127,127,0.08);
+  padding: 10px 12px;
+  margin: 16px 0;
+  border-radius: 6px;
+}
+
+/* Tiêu đề */
+.theorem-title {
+  font-weight: bold;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+/* Nội dung */
+.theorem-body {
+  line-height: 1.6;
+}
+
+/* Button */
+.toggle {
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Reset bộ đếm */
+.content {
+  counter-reset: section;
+}
+
+/* Đánh số h2 */
+.content h2 {
+  counter-increment: section;
+}
+
+/* Hiển thị số */
+.content h2::before {
+  content: counter(section) ". ";
+  color: var(--accent);
+}
+
+.content h1,
+.content h2,
+.content h3 {
+  color: var(--accent);
+}
+
+/* Link bình thường */
+a {
+  color: var(--accent);
+}
+
+/* Link đã truy cập (mặc định bị tím) */
+a:visited {
+  color: var(--accent);
+}
+
+/* Khi ở dark mode → đổi sang vàng */
+.dark a,
+
+.dark a:visited {
+  color: #facc15; /* vàng */
+}
+
+/* Sidebar mặc định mở */
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: transform 0.3s ease;
+}
+
+/* Khi đóng */
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+/* Nội dung co lại khi sidebar đóng */
+.content {
+  margin-left: 280px;
+  transition: margin-left 0.3s ease;
+}
+
+.content.full {
+  margin-left: 20px;
+}
+
+/* Nút hamburger */
+.menu-btn {
+  position: fixed;
+  top: 10px;
+  left: 15px;
+  font-size: 20px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 5px 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.sidebar {
+  padding: 60px 15px 15px;
+}
+
+/* Khung solution */
+.solution {
+  border-left: 4px solid var(--accent);
+  background: rgba(127,127,127,0.08);
+  padding: 10px 12px;
+  margin: 16px 0;
+  border-radius: 6px;
+}
+
+/* Tiêu đề */
+.solution summary {
+  font-weight: bold;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+}
+
+/* Ẩn icon mặc định */
+.solution summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Thêm icon custom */
+.solution summary::before {
+  content: "▶ ";
+}
+
+.solution[open] summary::before {
+  content: "▼ ";
+}
+
+/* Nội dung */
+.solution-body {
+  margin-top: 10px;
+  position: relative;
+}
+
+/* QED symbol */
+.solution-body::after {
+  content: "∎";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 1.1em;
+}
+
+.solution:not([open]) .solution-body::after {
+  display: none;
+}
