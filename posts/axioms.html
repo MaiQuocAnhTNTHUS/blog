@@ -31,19 +31,140 @@ window.MathJax = {
   <a href="../index.html">🏠 Trang chính</a>
   <h2>Tags</h2>
   <a href="../basics.html">Kiến thức cơ bản</a>
+  <a href="planar_geometry.html">Hình học phẳng</a>
   <a href="../calulus_on_manifolds.html">Giải tích trên đa tạp</a>
 </div>
 
 <div class="content">
-  <h1>Trực giác hình học</h1>
+    <h1>Trực giác hình học<br> Phần 1: Hình học affine</h1>
 
-  <p>
-    Trong bài viết này, ta sẽ cố gắng xây dựng mặt phẳng một cách tự nhiên nhất có thể. Đầu tiên, <b>bạn mong đợi gì từ một mặt phẳng?</b>
-  </p>
+    <h2>Liên thuộc và song song</h2>
 
-  
-  <h4>Tiếp theo</h4>
-  <a></a>
+    <p>
+        Trong bài viết này, ta sẽ cố gắng xây dựng mặt phẳng một cách tự nhiên nhất có thể. Đầu tiên, <b>bạn mong đợi gì từ một mặt phẳng?</b> Ta cần các điểm và các đường thẳng. Như 
+        vậy, đầu tiên ta cần một tập hợp $\mathscr{P}$, nơi ta gọi các phần tử của nó là các <b>điểm</b>, và một số tập con đặc biệt của $\mathscr{P}$ được gọi là <b>đường thẳng</b>. Giống như 
+        những gì bạn được học từ bé, ta kỳ vọng rằng $\mathscr{P}$ có tính chất sau:
+    </p>
+
+    <div class="axiom">
+        <div class="axiom-title">Tiên đề liên thuộc số $1$</div>
+        <div class="axiom-body">
+            Tồn tại duy nhất một đường thẳng đi qua hai điểm phân biệt trên mặt phẳng.
+        </div>
+    </div>
+
+    <p>
+        Với hai điểm $A,B$ phân biệt của $\mathscr{P}$, ta ký hiệu đường thẳng đi qua chúng là $\overline{AB}$.
+        <br> Chỉ với tiên đề này, ta vẫn còn để lọt những trường hợp tầm thường hoặc những trường hợp "kỳ dị", chẳng hạn như mặt phẳng rỗng, mặt phẳng một điểm và không có đường thẳng, hoặc là mặt 
+        phẳng chỉ có một đường thẳng chứa tất cả các điểm. Để loại bỏ chúng, ta cần thêm tiên đề sau:
+    </p>
+
+    <div class="axiom">
+        <div class="axiom-title">Tiên đề liên thuộc số $2$</div>
+        <div class="axiom-body">
+            Tồn tại ba điểm không thẳng hàng.
+        </div>
+    </div>
+
+    <p>
+        Một cách trực giác, tiên đề này nói rằng "thứ nguyên" (hay "chiều") của mặt phẳng phải lớn hơn $1$. Tiên đề ta chuẩn bị xây dựng sau đây buộc mặt phẳng phải có số chiều là $2$.
+    </p>
+
+    <div class="definition">
+        <div class="def-title">Định nghĩa</div>
+        <div class="def-body">
+            Hai đường thẳng $\ell_{1}$ và $\ell_{2}$ được gọi là <b>song song</b> nếu chúng hoặc là trùng nhau, hoặc là không giao nhau.
+        </div>
+    </div>
+
+    Giờ thì ta đã có đủ ngôn ngữ để phát biểu tiên đề tiếp theo:
+
+    <div class="axiom">
+        <div class="axiom-title">Tiên đề song song (Tiên đề Playfair)</div>
+        <div class="axiom-body">
+            Cho một điểm $P$ và một đường thẳng $\ell$, tồn tại duy nhất một đường thẳng qua $P$ và song song với $\ell$.
+        </div>
+    </div>
+
+    <p>
+        Trong không gian ba chiều $\mathbb{R}^{3}$, qua một điểm nằm ngoài một đường thẳng, ta vẽ được vô số đường thẳng song song với đường thẳng đã cho. Điều này cho ta trực giác về số 
+        chiều, như đã bàn ở trên. Ta gọi mặt phẳng thỏa mãn ba tiên đề này là <b>mặt phẳng Playfair</b>.
+    </p>
+
+    <h2>Các tính chất</h2>
+
+    <p>
+        Trên mặt phẳng Playfair, ta đã làm được một vài thứ có ý nghĩa.
+    </p>
+
+    <div class="theorem">
+        <div class="theorem-title">Mệnh đề</div>
+        <div class="theorem-body">
+            Song song là một quan hệ tương đương.
+        </div>
+    </div>
+
+    <details class="solution">
+        <summary>Chứng minh</summary>
+        <div class="solution-body">
+            Tính phản xạ và đối xứng là hiển nhiên. Để chứng minh tính bắc cầu, ta lấy ra ba đường thẳng $\ell_{i},i=1,2,3$ thỏa mãn $\ell_{1}\parallel\ell_{2}$ và 
+            $\ell_{2}\parallel\ell_{3}$. Giả sử phản chứng rằng $\ell_{1}$ và $\ell_{3}$ không song song với nhau, khi đó chúng khác nhau và giao nhau tại đúng một điểm $P$. Qua $P$ ta có 
+            hai đường thẳng song song với $\ell_{2}$, mâu thuẫn với tiên đề song song. Vậy giả sử là sai và ta có kết luận.
+        </div>
+    </details>
+
+    <div class="definition">
+        <div class="def-title">Định nghĩa</div>
+        <div class="def-body">
+            Một lớp tương đương các đường thẳng song song được gọi là một <b>chùm song song</b>.
+        </div>
+    </div>
+
+    <p>
+        Nhờ có tiên đề liên thuộc số $2$, ta biết rằng có ít nhất ba chùm song song. Một cách khéo léo, ta tìm được cách đánh giá số điểm trên một đường thẳng:
+    </p>
+
+    <div class="theorem">
+        <div class="theorem-title">Mệnh đề</div>
+        <div class="theorem-body">
+            Các đường thẳng có cùng lực lượng, và bằng lực lượng của các chùm song song. Hệ quả là một đường thẳng luôn có ít nhất hai điểm.
+        </div>
+    </div>
+
+    <details class="solution">
+        <summary>Chứng minh</summary>
+        <div class="solution-body">
+            Ta đã biết rằng có ít nhất ba chùm song song, chẳng hạn là $[a]$, $[b]$, và $[c]$. Ta chứng minh rằng ba đường thẳng $a,b,c$ có cùng lực lượng. Thật vậy, mỗi điểm $P$ của $b$ 
+            tương ứng duy nhất với một đường thẳng qua $P$ và song song với $a$. Đường này chắc chắn cắt $c$ tại một điểm $f_{b,c}(P)$, do đó ta có ánh xạ $f:b\to c$, trong đó $f(P)=P$ nếu 
+            $P$ là giao điểm của $a,b$, và $\overline{Pf_{b,c}(P)}\parallel a$ nếu ngược lại. Vì $f_{b,c}$ và $f_{c,b}$ là một cặp song ánh nên lực lượng của $b$ và $c$ bằng nhau. Tương tự, 
+            ta suy ra $a,b,c$ có lực lượng bằng nhau. Lấy một đường thẳng $x\in [a]$ thì ta cũng suy ra lực lượng của $x,b,c$ là bằng nhau. Vậy các đường thẳng trong cùng một chùm cũng có 
+            cùng lực lượng với $a,b,c$. Giờ ta lấy một chùm $[d]$ khác. Chùm này phải cắt hai trong ba chùm $[a],[b],[c]$ nên bằng kỹ thuật tương tự, ta chứng minh được mọi đường thẳng có 
+            cùng lực lượng. Giờ ta chỉ cần chứng minh lực lượng của $[d]$ bằng với lực lượng của một đường thẳng là xong. Giả sử $[d]$ cắt $a$, khi đó ta có song ánh gửi một điểm $P$ thuộc 
+            $a$ thành đường thẳng qua $P$ và song song với $a$, từ đó có kết luận.
+        </div>
+    </details>
+
+    <h2>Các phép biến hình</h2>
+
+    <p>
+        Khi nghiên cứu một đối tượng, ta không quan sát riêng lẻ từng đối tượng mà đặt chúng trong mối quan hệ qua lại. Hình học cũng thế, có mật phẳng thì sẽ phải có ánh xạ giữa các mặt 
+        phẳng. Trước hết, ta sẽ tìm hiểu các ánh xạ đặc biệt từ một mặt phẳng (Playfair) vào chính nó.
+    </p>
+
+    <div class="definition">
+        <div class="def-title">Định nghĩa</div>
+        <div class="def-body">
+            Một <b>phép co giãn</b> trên mặt phẳng $\mathscr{P}$ là một ánh xạ $\sigma:\mathscr{P}\to\mathscr{P}$ thỏa mãn: với hai điểm $P,Q$ phân biệt trên mặt phẳng $\mathscr{P}$, ta 
+            luôn có $\sigma(Q)$ nằm trên đường thẳng qua $\sigma(P)$ và song song với $\overline{PQ}$.
+        </div>
+    </div>
+
+    <p>
+        Khi đọc đến đây, sẽ rất hữu ích khi bạn nghĩ trong đầu phép tịnh tiến hay vị tự, vì đó chính xác là những gì ta sẽ làm, ít nhất là về trực giác.
+    </p>
+
+    <h4>Tiếp theo</h4>
+    <a></a>
 
 
 </div>
