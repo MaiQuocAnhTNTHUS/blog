@@ -66,6 +66,13 @@ window.MathJax = {
         </div>
     </div>
 
+    <div class="theorem">
+        <div class="theorem-title">Hệ quả</div>
+        <div class="theorem-body">
+            Không có đường thẳng nào chứa tất cả các điểm trên mặt phẳng.
+        </div>
+    </div>
+
     <p>
         Một cách trực giác, tiên đề này nói rằng "thứ nguyên" (hay "chiều") của mặt phẳng phải lớn hơn $1$. Tiên đề ta chuẩn bị xây dựng sau đây buộc mặt phẳng phải có số chiều là $2$.
     </p>
@@ -73,7 +80,7 @@ window.MathJax = {
     <div class="definition">
         <div class="def-title">Định nghĩa</div>
         <div class="def-body">
-            Hai đường thẳng $\ell_{1}$ và $\ell_{2}$ được gọi là <b>song song</b> nếu chúng hoặc là trùng nhau, hoặc là không giao nhau.
+            Hai đường thẳng $\ell_{1}$ và $\ell_{2}$ được gọi là <b>song song</b>, và được ký hiệu là $\ell_{1}\parallel\ell_{2}$, nếu chúng hoặc là trùng nhau, hoặc là không giao nhau.
         </div>
     </div>
 
@@ -157,11 +164,36 @@ window.MathJax = {
             Một <b>phép co giãn</b> trên mặt phẳng $\mathscr{P}$ là một ánh xạ $\sigma:\mathscr{P}\to\mathscr{P}$ thỏa mãn: với hai điểm $P,Q$ phân biệt trên mặt phẳng $\mathscr{P}$, ta 
             luôn có $\sigma(Q)$ nằm trên đường thẳng qua $\sigma(P)$ và song song với $\overline{PQ}$.
         </div>
+        <div class="image-container">
+            <img src="../images/dilation.svg" alt="TikZ">
+        </div>
     </div>
 
     <p>
-        Khi đọc đến đây, sẽ rất hữu ích khi bạn nghĩ trong đầu phép tịnh tiến hay vị tự, vì đó chính xác là những gì ta sẽ làm, ít nhất là về trực giác.
+        Khi đọc đến đây, sẽ rất hữu ích khi bạn nghĩ trong đầu phép tịnh tiến hay vị tự, vì đó chính xác là những gì ta sẽ làm, ít nhất là về trực giác. Chú ý rằng ta không viết là 
+        $\overline{\sigma(P)\sigma(Q)}\parallel\overline{PQ}$, vì ta không yêu cầu $\sigma(P)\neq\sigma(Q)$.
     </p>
+
+    <div class="theorem">
+        <div class="theorem-title">Mệnh đề</div>
+        <div class="theorem-body">
+            Cho hai điểm phân biệt $P,Q$ trên mặt phẳng và $\sigma$ là một phép co giãn. Nếu $\sigma(P)\neq\sigma(Q)$ thì $\sigma$ là một song ánh, và ta có thể xác định được ảnh của một 
+            điểm $R$ bất kỳ thông qua $\sigma(P)$ và $\sigma(Q)$. Còn nếu $\sigma(P)=\sigma(Q)$ thì $\sigma$ biến tất cả các điểm thành $\sigma(P)$.
+        </div>
+    </div>
+
+    <details class="solution">
+        <summary>Chứng minh</summary>
+        <div class="solution-body">
+            Trong trường hợp đầu tiên, ta xét một điểm $R$ bất kỳ. Nếu $R\notin\overline{PQ}$ thì $\sigma(R)$ là giao điểm của các đường thẳng lần lượt qua $\sigma(P),\sigma(Q)$ và song 
+            song với $\overline{PR},\overline{QR}$. Còn nếu $R\in\overline{PQ}$ thì bằng cách lấy một điểm $S$ bên ngoài $\overline{PQ}$, ta xác định được ảnh của $R$ thông qua ảnh của 
+            $\sigma(P)$ và $\sigma(S)$, và hơn nữa ta còn có $\sigma(R)\in\overline{\sigma(P)\sigma(Q)}$.
+            <br> Giả sử $\sigma(R)=\sigma(S)=T$. Nếu $R\notin\overline{PQ}$ thì do $\overline{PS}\parallel\overline{\sigma(P)T}\parallel\overline{PR}$ và 
+            $\overline{QR}\parallel\overline{QS}$ nên $R=S$. Còn nếu $R,S\in\overline{PQ}$ thì bằng cách sử dụng điểm $X\notin\overline{PQ}$, ta có $\overline{XR}\parallel\overline{XS}$.
+            <br> Cuối cùng, giả sử $\sigma(P)=\sigma(Q)$. Nếu tồn tại $R$ sao cho $\sigma(R)\neq\sigma(P)$ thì theo ý trên, $\sigma$ là một song ánh nên $P=Q$, mâu thuẫn. Vậy giả sử là 
+            sai và ta có kết luận. 
+        </div>
+    </details>
 
     <h4>Tiếp theo</h4>
     <a></a>
