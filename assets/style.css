@@ -270,6 +270,12 @@ a:visited {
     text-align: center;
 }
 
+img {
+  width: 100%;
+  height: auto;
+}
+
+
 body.dark img[src$=".svg"] {
     filter: brightness(0) invert(1);
 }
