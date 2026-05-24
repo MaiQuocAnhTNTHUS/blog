@@ -42,61 +42,124 @@ window.MathJax = {
         Ở bài trước, ta đã sử dụng trực giác để mô tả mặt phẳng xạ ảnh. Để có thể dễ dàng làm việc hơn, ta cần một mô hình của mặt phẳng xạ ảnh.
     </p>
 
+    <h2>Mô hình tọa độ</h2>
+
+    <p>
+        Để tính toán hiệu quả nhất, ta sẽ định nghĩa một mô hình mặt phẳng xạ ảnh được sinh ra từ không gian tọa độ.
+    </p>
+
     <div class="definition">
         <div class="def-title">Định nghĩa</div>
         <div class="def-body">
             Cho $\mathbb{K}$ là một trường. Trên $\mathbb{K}^{3}-\{0\}$, tồn tại một quan hệ tương đương $\sim$ thỏa mãn: $x\sim y$ nếu tồn tại $\lambda\in\mathbb{K}^{\times}$ sao cho 
             $y=\lambda x$. Khi đó không gian thương $\left(\mathbb{K}^{3}-\{0\}\right)/\sim$ được gọi là $\mathbb{K}$<b>-mặt phẳng xạ ảnh</b>, và được ký hiệu là 
-            $\mathbb{KP}^{2}$. Mỗi điểm của $\mathbb{KP}^{2}$ là một lớp tương đương $[x,y,z]$, hay cũng chính là thương của một không gian con $1$ chiều, còn mỗi đường thẳng của 
-            $\mathbb{KP}^{2}$ là thương của một không gian con $2$ chiều.
+            $\mathbb{KP}^{2}$. Mỗi điểm của $\mathbb{KP}^{2}$ là một lớp tương đương $[x,y,z]$, hay cũng có thể hiểu là thương của một không gian con $1$ chiều, còn mỗi đường thẳng của 
+            $\mathbb{KP}^{2}$ có thể hiểu là thương của một không gian con $2$ chiều.
         </div>
     </div>
 
     <p>
-        Ta cần kiểm tra xem $\mathbb{KP}^{2}$ có thỏa mãn tất cả các tiên đề mà ta nêu ở bài trước hay không.
+        Ta cần kiểm tra xem $\mathbb{KP}^{2}$ có thỏa mãn tất cả các tiên đề mà ta nêu ở bài trước hay không. Thay vì lần lượt kiểm tra từng tiên đề, ta chỉ cần chứng minh rằng 
+        $\mathbb{KP}^{2}$ khi bỏ đi một đường thẳng thì đẳng cấu với $\mathbb{K}^{2}$ là xong. Giả sử $[\ell]$ là một đường thẳng trong $\mathbb{KP}^{2}$, tức là $\ell$ là một không gian 
+        con $2$ chiều của $\mathbb{K}^{3}$. Bằng cách chuyển tọa độ, ta giả sử $\ell$ chính là không gian con $x_{3}=0$. Xét ánh xạ $\varphi$ biến mỗi không gian con $1$ chiều $P$ thành 
+        giao điểm của $P$ với mặt phẳng $A:=\left\{\mathbf{x}\in\mathbb{K}^{3}:x_{3}=1\right\}$. Vì mặt phẳng $A$ không đi qua gốc tọa độ nên mỗi điểm trên $A$ cũng tương ứng với không 
+        gian con sinh bởi nó. Như vậy, $\varphi$ là một song ánh, và do đó ta có thể trang bị cấu trúc affine cho $\mathbb{KP}^{2}-[\ell]$ thông qua $\varphi$.
+        <br> Như vậy, để tính toán trong không gian xạ ảnh, ta thường chia các điểm $[x,y,z]$ thành hai loại, đó là $z\neq 0$ và $z=0$. Khi $z\neq 0$ ta có thể chuẩn hóa thành 
+        $\left[\dfrac{x}{z},\dfrac{y}{z},1\right]$.
+    </p>
+
+    <h2>Mô hình trừu tượng</h2>
+
+    <p>
+        Lấy cảm hứng từ mô hình tọa độ, ta tìm một $\mathbb{K}$-không gian vector $3$ chiều chứa $\mathbb{K}$-mặt phẳng affine $\mathscr{P}$ như một siêu phẳng, sau đó bổ sung thêm không 
+        gian con song song với $\mathscr{P}$ đóng vai trò là đường chân trời. Ở đây, $\mathbb{K}$-mặt phẳng affine là một bộ ba $(\mathscr{P},\mathscr{V},\Theta)$, trong đó 
+        $\mathscr{P}$ đóng vai trò là mặt phẳng, $\mathscr{V}$ đóng vai trò là phép tịnh tiến, và $\Theta:\mathscr{P}\times\mathscr{P}\to\mathscr{V}$ đóng vai trò là hàm lấy vector:
+        $$\Theta(P_{1},P_{2})=\overrightarrow{P_{1}P_{2}}.$$
+    </p>
+
+    <div class="definition">
+        <div class="def-title">Định nghĩa</div>
+        <div class="def-body">
+            Cho $\mathbb{K}$ là một trường và $(\mathscr{P},\mathscr{V},\Theta)$ là một $\mathbb{K}$-mặt phẳng affine. Một <b>trường vector</b> trên $\mathscr{P}$ là một ánh xạ 
+            $f:\mathscr{P}\to\mathscr{V}$. Tập hợp tất cả các trường vector trên $\mathscr{P}$ có cấu trúc không gian vector chính tắc và được ký hiệu là $\mathbf{V}(\mathscr{P})$.
+        </div>
+    </div>
+
+    <p>
+        Ta sẽ không dùng toàn bộ các trường vector, mà chỉ quan tâm đến hai loại được mô tả như sau.
+        <ol>
+            <li>
+                Với mỗi $v\in\mathscr{V}$, ta có <b>trường hằng</b> $e_{v}$ biến mỗi điểm $P$ thành vector $v$. Bạn có thể coi nó như là hình ảnh của một phép tịnh tiến theo $v$.
+                <div class="image-container">
+                    <img src="../images/const_field.svg">
+                </div>
+                Vì vậy, tập hợp tất cả các trường hằng trên $\mathscr{P}$ được ký hiệu là $\mathcal{T}(\mathscr{P})$.
+            </li>
+            <li>
+                Với mỗi $k\in\mathbb{K}$ và $P\in\mathscr{P}$, ta có <b>trường có tâm</b> $e_{k,P}$ biến mỗi điểm $Q$ thành vector $k\overrightarrow{QP}$. Bạn có thể coi nó như là hình 
+                ảnh của một phép vị tự tâm $P$ tỷ số $1-k$.
+                <div class="image-container">
+                    <img src="../images/central_field.svg">
+                </div>
+                Vì vậy, tập hợp tất cả các trường có tâm trên $\mathscr{P}$ được ký hiệu là $\mathcal{H}(\mathscr{P})$.
+            </li>
+        </ol>
     </p>
 
     <div class="theorem">
-        <div class="theorem-title">Mệnh đề</div>
+        <div class="theorem-title">Định lý</div>
         <div class="theorem-body">
-            Tồn tại duy nhất một đường thẳng đi qua hai điểm phân biệt $[X],[Y]\in\mathbb{KP}^{2}$.
+            Tập hợp $\widehat{\mathscr{P}}:=\mathcal{T}(\mathscr{P})\cup\mathcal{H}(\mathscr{P})$ là một không gian con của $\mathbf{V}(\mathscr{P})$ có số chiều là $3$, và được gọi là 
+            <b>không gian phổ dụng</b> của $\mathscr{P}$.
         </div>
     </div>
 
     <details class="solution">
         <summary>Chứng minh</summary>
         <div class="solution-body">
-            Với $X,Y$ là hai không gian con $1$ chiều phân biệt của $\mathbb{K}^{3}$, không gian $X+Y$ có số chiều là $2$ và cũng chính là không gian con nhỏ nhất chứa cả $X$ vả $Y$. 
-            Chứng minh hoàn tất.
-        </div>
-    </details>
-
-    <div class="theorem">
-        <div class="theorem-title">Mệnh đề</div>
-        <div class="theorem-body">
-            Tồn tại duy nhất một điểm thuộc hai đường thẳng phân biệt $[\ell_{1}],[\ell_{2}]$ của $\mathbb{KP}^{2}$.
-        </div>
-    </div>
-
-    <details class="solution">
-        <summary>Chứng minh</summary>
-        <div class="solution-body">
-            Với $\ell_{1},\ell_{2}$ là hai không gian con $2$ chiều phân biệt của $\mathbb{K}^{3}$, ta có
-            $$1\geq\dim(\ell_{1}\cap\ell_{2})=\dim(\ell_{1})+\dim(\ell_{2})-\dim(\ell_{1}+\ell_{2})\geq 2+2-3=1.$$
-            Vậy $\ell_{1}\cap\ell_{2}$ là một không gian con $1$ chiều. Chứng minh hoàn tất.
+            Dễ thấy $\mathcal{T}(\mathscr{P})$ là một không gian con của $\mathbf{V}(\mathscr{P})$ nên để chứng minh tính đóng với phép cộng, ta xét các trường hợp sau:
+            <ol>
+                <li>
+                    Lấy một trường hằng $e_{v}$ và một trường có tâm $e_{k,P}$. Nếu $k=0$ thì $e_{k,P}=e_{\overrightarrow{0}}$, ta có ngay kết luận. Nếu $k\neq 0$, ta lấy điểm $Q$ sao 
+                    $\overrightarrow{PQ}=\dfrac{1}{k}v$. Khi đó với mỗi $R\in\mathscr{P}$ ta có
+                    $$(e_{v}+e_{k,P})(R)=v+k\overrightarrow{RP}=k\overrightarrow{PQ}+k\overrightarrow{RP}=k\overrightarrow{RQ}=e_{k,Q}(R).$$
+                    Vậy $e_{v}+e_{k,P}=e_{k,Q}\in\widehat{\mathscr{P}}$.
+                </li>
+                <li>
+                    Lấy hai trường có tâm $e_{k,P}$ và $e_{l,Q}$. Nếu $k+l=0$ thì với mỗi $S\in\mathscr{P}$, ta có
+                    $$(e_{k,P}+e_{l,Q})(S)=k\overrightarrow{SP}+l\overrightarrow{SQ}=k\overrightarrow{QP}=e_{k\overrightarrow{QP}}(S)$$
+                    nên $e_{k,P}+e_{l,Q}\in\widehat{\mathscr{P}}$. Còn nếu $k+l\neq 0$, ta chọn điểm $R$ thỏa mãn $\overrightarrow{PR}=\dfrac{l}{k+l}\overrightarrow{PQ}$. Khi đó 
+                    $k\overrightarrow{RP}+l\overrightarrow{RQ}=\overrightarrow{0}$ và ta có
+                    $$(e_{k,P}+e_{l,Q})(S)=k\overrightarrow{SP}+l\overrightarrow{SQ}=(k+l)\overrightarrow{SR}=e_{k+l,R}(S),$$
+                    suy ra $e_{k,P}+e_{l,Q}=e_{k+l,R}\in\widehat{\mathscr{P}}$.
+                </li>
+            </ol>
+            Để chứng minh tính đóng với phép nhân vô hướng, ta chỉ cần để ý rằng $$ke_{v}=e_{kv}$$ và $$le_{k,P}=e_{kl,P}.$$
+            Cuối cùng, ta chỉ ra một cơ sở của $\widehat{\mathscr{P}}$. Lấy một điểm $O\in\mathscr{P}$ và chọn một cơ sở $\left(i,j\right)$ của 
+            $\mathscr{V}$, ta chứng minh rằng $\mathcal{B}:=\left(e_{1,O},e_{i},e_{j}\right)$ là một cơ sở của $\widehat{\mathscr{P}}$. Thật vậy, mỗi 
+            một vector $v\in\mathscr{V}$ đều viết được dưới dạng $v=ki+lj$ nên $e_{v}=ke_{i}+le_{j}$.
+            Với mỗi $P\in\mathscr{P}$, ta có $e_{k,P}=ke_{1,O}+e_{k\overrightarrow{OP}}$ nên nó cũng biểu thị tuyến tính được qua $\mathcal{B}$. Để thấy sự độc lập tuyến tính, giả sử ta có 
+            $k_{1},k_{2},k_{3}\in\mathbb{K}$ thỏa mãn
+            $$k_{1}e_{1,O}+k_{2}e_{i}+k_{3}e_{j}=e_{\overrightarrow{0}}.$$
+            Tính hai vế tại $O$ ta có $k_{2}i+k_{3}j=\overrightarrow{0}$, suy ra $k_{2}=k_{3}=0$ và $k_{1}e_{1,O}=e_{\overrightarrow{0}}$. Tính tiếp tại một điểm $P\neq O$ và ta có 
+            $k_{1}=0$. Chứng minh hoàn tất.
         </div>
     </details>
 
     <p>
-        Tiếp theo, ta cần phải làm rõ thế nào là một phép chiếu xuyên tâm trên $\mathbb{KP}^{2}$.
+        Với ý tưởng coi $\mathscr{P}$ là một siêu phẳng của $\widehat{\mathscr{P}}$, ta đồng nhất mỗi điểm $P\in\mathscr{P}$ với trường có tâm $e_{1,P}$ và đồng nhất mỗi vector 
+        $v\in\mathscr{V}$ với trường hằng $e_{v}$, dẫn đến $\widehat{\mathscr{P}}=\mathscr{V}\sqcup\left(\mathbb{K}^{\times}\times\mathscr{P}\right)$. Khi đó nếu lấy ba điểm không thẳng 
+        hàng $A,B,C$ của $\mathscr{P}$ thì ta có một cơ sở của $\widehat{\mathscr{P}}$. Mỗi điểm $P\in\mathscr{P}$ lúc này có duy nhất một biểu thị tuyến tính dạng
+        $$P=\lambda_{1}A+\lambda_{2}B+\lambda_{3}C,$$
+        trong đó $\lambda_{1}+\lambda_{2}+\lambda_{3}=1$. Bộ ba $(\lambda_{1},\lambda_{2},\lambda_{3})$ được gọi là <b>tọa độ tỷ cự</b> của $P$ đối với hệ điểm $(A,B,C)$, hay ta cũng nói 
+        $P$ là <b>tâm tỷ cự</b> của hệ điểm $(A,B,C)$ với trọng số $(\lambda_{1},\lambda_{2},\lambda_{3})$.
+        <br> Vì $\widehat{\mathscr{P}}$ là một không gian vector, ta có thể định nghĩa quan hệ tương đương $\sim$ giống như mô hình tọa độ: hai phần tử $A,B$ khác $0$ được gọi là tương 
+        đương nếu tồn tại $\lambda\in\mathbb{K}^{\times}$ sao cho $A=\lambda B$. Không gian thương $\widehat{\mathscr{P}}/\sim$ được gọi là <b>bao xạ ảnh</b> của mặt phẳng $\mathscr{P}$, 
+        và được ký hiệu là $\overline{\mathscr{P}}$. Cụ thể hơn, ta có
+        $$\overline{\mathscr{P}}=\left(\widehat{\mathscr{P}}/\sim\right)=\left(\left[\mathscr{V}\sqcup\left(\mathbb{K}^{\times}\times\mathscr{P}\right)\right]/\sim\right)
+        \cong\left(\mathscr{V}/\sim\right)\sqcup\mathscr{P}.$$
+        Thành phần $\mathscr{V}/\sim$ chính là <b>đường chân trời</b> của $\mathscr{P}$ và được ký hiệu là $\infty_{\mathscr{P}}$.
     </p>
-
-    <div class="theorem">
-        <div class="theorem-title">Mệnh đề</div>
-        <div class="theorem-body">
-            Các phép chiếu xuyên tâm $[P]$ ứng với $[\ell]$ hoặc là có dạng "hằng", hoặc là có dạng "ly tâm"
-        </div>
-    </div>
 
     <h4>Trước đó</h4>
     <a href="affine2.html">Hình học xạ ảnh. Phần 1: Trực giác hình học</a>
