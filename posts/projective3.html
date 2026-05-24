@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title></title>
+
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/computer-modern@0.1.2/index.min.css">
+
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$']],
+    displayMath: [['$$', '$$']]
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+
+<button class="toggle" onclick="toggleDark()" id="themeBtn"></button>
+<button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+<div class="sidebar">
+  <a href="../index.html">🏠 Trang chính</a>
+  <h2>Tags</h2>
+  <a href="../basics.html">Kiến thức cơ bản</a>
+  <a href="../planar_geometry.html">Hình học phẳng</a>
+  <a href="../calulus_on_manifolds.html">Giải tích trên đa tạp</a>
+</div>
+
+<div class="content">
+    <h1>Hình học xạ ảnh<br> Phần 3: Đối ngẫu xạ ảnh</h1>
+
+    <p>
+        Ngoài phép chiếu xuyên tâm ra, mặt phẳng xạ ảnh còn có một phép biến hình nữa. Khác với các phép biến đổi trước ta từng nhắc đến, lần này một điểm sẽ biến thành một đường thẳng và 
+        ngược lại.
+    </p>
+
+    <h2>Không gian vector đối ngẫu</h2>
+    
+    <p>
+        Vì ta quan tâm đến mặt phẳng xạ ảnh, nên chỉ cần xét các không gian vector $3$ chiều là đủ, nhưng thật ra ta có thể mở rộng định nghĩa cho không gian với số chiều hữu hạn tùy ý.
+    </p>
+
+    <div class="definition">
+        <div class="def-title">Mệnh đề - Định nghĩa</div>
+        <div class="def-body">
+            Cho $V$ là một $\mathbb{K}$-không gian vector. Khi đó không gian $V^{*}:=\mathrm{Hom}(V,\mathbb{K})$ các ánh xạ tuyến tính từ $V$ vào $\mathbb{K}$ là một $\mathbb{K}$-không 
+            gian vector đẳng cấu với $V$, và được gọi là <b>không gian đối ngẫu</b> của $V$.
+        </div>
+    </div>
+
+    <details class="solution">
+        <summary>Chứng minh</summary>
+        <div class="solution-body">
+            Gọi $(v_{1},v_{2},v_{3})$ là một cơ sở của $V$. Với mỗi $i=1,2,3$, gọi $v_{i}^{*}:V\to\mathbb{K}$ là ánh xạ chiếu lên tọa độ thứ $i$, nghĩa là
+            $$v_{i}^{*}(k_{1}v_{1}+k_{2}v_{2}+k_{3}v_{3})=k_{i}.$$
+            Ta chỉ cần chứng minh rằng $\left(v_{1}^{*},v_{2}^{*},v_{3}^{*}\right)$ là một cơ sở của $V^{*}$ là xong. Giả sử ta có $f\in V^{*}$. Khi đó ta có biểu thị tuyến tính
+            $$f=f(v_{1})v_{1}^{*}+f(v_{2})v_{2}^{*}+f(v_{3})v_{3}^{*}.$$
+            Giờ giả sử $0=k_{1}v_{1}^{*}+k_{2}v_{2}^{*}+k_{3}v_{3}^{*}$. Lần lượt thay $v_{1},v_{2},v_{3}$ vào phương trình ta có $k_{1}=k_{2}=k_{3}=0$. Chứng minh hoàn tất.
+        </div>
+    </details>
+
+    <h2>Đối ngẫu xạ ảnh</h2>
+
+    <p>
+        Cho $V$ là một không gian vector $3$ chiều và ký hiệu tập hợp các không gian con của $V$ là $\mathrm{Sub}(V)$. Xét hai ánh xạ 
+        $\varphi:\mathrm{Sub}(V)\to\mathrm{Sub}\left(V^{*}\right)$ và $\psi:\mathrm{Sub}\left(V^{*}\right)\to\mathrm{Sub}(V)$ được cho bởi
+        \begin{align*}
+            \varphi(W) &:= \left\{f\in V^{*}:f(v)=0\quad\forall v\in W\right\}=\left\{f\in V^{*}:\ker(f)\supseteq W\right\};\\
+            \psi(U) &:= \left\{v\in V:f(v)=0\quad\forall f\in U\right\}=\bigcap_{f\in U}\ker(f).
+        \end{align*}
+        Nhớ rằng ta có đẳng cấu chính tắc $\varphi(W)\cong(V/W)^{*}$ nên $\dim(\varphi(W))=\dim V-\dim W$.
+        <br> ta có
+        \begin{align*}
+            (\psi\circ\varphi)(W) &:= \left\{v\in V:f(v)=0\quad\forall f\in\varphi(W)\right\}\\
+            &=\left\{v\in V:f(v)=0\quad\forall f\in V^{*}:f(w)=0\quad\forall w\in W\right\}\\
+            &=W.
+        \end{align*}
+        Ta có dấu đẳng thức cuối cùng vì khi ta luôn tìm được một cơ sở của $V$ với hai trong số chúng là cơ sở của $W$, từ đó dựng ra ánh xạ có hạt nhân chính xác là $W$.
+        <br> Ta cũng có
+        \begin{align*}
+            (\varphi\circ\psi)(U) &:= \left\{f\in V^{*}:f(v)=0\quad\forall v\in\psi(U)\right\}\\
+            &=\left\{f\in V^{*}:f(v)=0\quad\forall v\in V: f(v)=0\quad\forall f\in U\right\}\\
+            &=W^{*}.
+        \end{align*}
+        Ta có dấu đẳng thức cuối cùng vì $\left\{f\in V^{*}:f(v)=0\quad\forall v\in V: f(v)=0\quad\forall f\in U\right\}\supseteq U$ và số chiều của chúng bằng nhau.
+    </p>
+
+    <h4>Trước đó</h4>
+    <a href="affine2.html">Hình học xạ ảnh. Phần 2: Trực giác đại số</a>
+
+    <h4>Tiếp theo</h4>
+
+</div>
+
+<script src="../assets/data.js"></script>
+<script src="../assets/script.js"></script>
+
+</body>
+
+</html>
