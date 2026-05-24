@@ -127,8 +127,72 @@ function renderPostTags() {
   }
 }
 
+function renderSearchPanel() {
+  if (typeof SITE_DATA === "undefined") return;
+
+  const isPost = window.location.pathname.includes("/posts/");
+  const prefix = isPost ? "../" : "./";
+
+  const panel = document.createElement("div");
+  panel.className = "right-sidebar";
+  panel.innerHTML = `
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Tìm bài viết, tags..." autocomplete="off" />
+      <div id="searchResults" class="search-results"></div>
+    </div>
+  `;
+  document.body.appendChild(panel);
+
+  const searchInput = document.getElementById("searchInput");
+  searchInput.addEventListener("input", (e) => handleSearch(e.target.value, prefix));
+}
+
+function handleSearch(query, prefix) {
+  const resultsContainer = document.getElementById("searchResults");
+  resultsContainer.innerHTML = "";
+  query = query.toLowerCase().trim();
+
+  if (!query) return;
+
+  let html = "";
+
+  // Search Tags
+  for (const [tagId, tagInfo] of Object.entries(SITE_DATA.tags)) {
+    if (
+      tagInfo.name.toLowerCase().includes(query) ||
+      (tagInfo.description && tagInfo.description.toLowerCase().includes(query))
+    ) {
+      html += `
+        <div class="search-result-item">
+          <span class="result-type">Tag</span>
+          <a href="${prefix}tag.html?id=${tagId}">${tagInfo.name}</a>
+        </div>
+      `;
+    }
+  }
+
+  // Search Posts
+  for (const post of SITE_DATA.posts) {
+    if (post.title.toLowerCase().includes(query)) {
+      html += `
+        <div class="search-result-item">
+          <span class="result-type">Bài viết</span>
+          <a href="${prefix}${post.url}">${post.title}</a>
+        </div>
+      `;
+    }
+  }
+
+  if (html === "") {
+    html = "<p style='font-size: 0.9em; opacity: 0.8;'>Không tìm thấy kết quả.</p>";
+  }
+
+  resultsContainer.innerHTML = html;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   renderSidebar();
   renderTagPage();
   renderPostTags();
+  renderSearchPanel();
 });
