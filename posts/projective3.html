@@ -71,31 +71,69 @@ window.MathJax = {
     <h2>Đối ngẫu xạ ảnh</h2>
 
     <p>
-        Cho $V$ là một không gian vector $3$ chiều và ký hiệu tập hợp các không gian con của $V$ là $\mathrm{Sub}(V)$. Xét hai ánh xạ 
+        Cho $V$ là một không gian vector $3$ chiều và ký hiệu dàn các không gian con của $V$ được sắp bởi quan hệ bao hàm là $\mathrm{Sub}(V)$. Xét hai ánh xạ 
         $\varphi:\mathrm{Sub}(V)\to\mathrm{Sub}\left(V^{*}\right)$ và $\psi:\mathrm{Sub}\left(V^{*}\right)\to\mathrm{Sub}(V)$ được cho bởi
         \begin{align*}
             \varphi(W) &:= \left\{f\in V^{*}:f(v)=0\quad\forall v\in W\right\}=\left\{f\in V^{*}:\ker(f)\supseteq W\right\};\\
             \psi(U) &:= \left\{v\in V:f(v)=0\quad\forall f\in U\right\}=\bigcap_{f\in U}\ker(f).
         \end{align*}
-        Nhớ rằng ta có đẳng cấu chính tắc $\varphi(W)\cong(V/W)^{*}$ nên $\dim(\varphi(W))=\dim V-\dim W$.
-        <br> ta có
+        Nhớ rằng ta có đẳng cấu chính tắc $\varphi(W)\cong(V/W)^{*}$ nên $\dim\varphi(W)=\dim V-\dim W$. Để tính $\dim\psi(U)$, ta sử dụng đẳng cấu tự nhiên $V\cong V^{**}$ được cho bởi 
+        $e:v\mapsto (f\mapsto f(v))$. Vì $U\leq V^{*}$ nên ta có đồng cấu đối ngẫu $\mathrm{res}:V^{**}\to U^{*}$, từ đó có toàn ánh $E:=\mathrm{res}\circ e:V\to U^{*}$. Ta 
+        tính hạt nhân của $E$ như sau:
+        $$E(v)=0\iff E(v)(f)=0\quad\forall f\in U\iff f(v)=0\quad\forall f\in U\iff v\in\psi(U).$$
+        Theo định lý tương quan hạch-ảnh, ta có $\dim V=\dim\psi(U)+\dim U^{*}$, từ đó $\dim\psi(U)=\dim V-\dim U$.
+        <br> Ta có
         \begin{align*}
             (\psi\circ\varphi)(W) &:= \left\{v\in V:f(v)=0\quad\forall f\in\varphi(W)\right\}\\
             &=\left\{v\in V:f(v)=0\quad\forall f\in V^{*}:f(w)=0\quad\forall w\in W\right\}\\
-            &=W.
+            &\geq W.
         \end{align*}
-        Ta có dấu đẳng thức cuối cùng vì khi ta luôn tìm được một cơ sở của $V$ với hai trong số chúng là cơ sở của $W$, từ đó dựng ra ánh xạ có hạt nhân chính xác là $W$.
+        Mà $\dim(\psi\circ\varphi)(W)=\dim V-\dim\varphi(W)=\dim W$ nên $(\psi\circ\varphi)(W)=W$.
         <br> Ta cũng có
         \begin{align*}
             (\varphi\circ\psi)(U) &:= \left\{f\in V^{*}:f(v)=0\quad\forall v\in\psi(U)\right\}\\
             &=\left\{f\in V^{*}:f(v)=0\quad\forall v\in V: f(v)=0\quad\forall f\in U\right\}\\
-            &=W^{*}.
+            &\geq U.
         \end{align*}
-        Ta có dấu đẳng thức cuối cùng vì $\left\{f\in V^{*}:f(v)=0\quad\forall v\in V: f(v)=0\quad\forall f\in U\right\}\supseteq U$ và số chiều của chúng bằng nhau.
+        Mà $\dim(\varphi\circ\psi)(U)=\dim V-\dim\psi(U)=\dim U$ nên $(\varphi\circ\psi)(U)=U$. Vậy $\varphi$ và $\psi$ là một cặp song ánh.
+        Mặt khác, nếu $W_{1}\leq W_{2}$ thì $\varphi(W_{1})\geq\varphi(W_{2})$ nên cặp $(\varphi,\psi)$ là song ánh đảo thứ tự.
+        <br> Bây giờ, ta gọi $\mathbb{P}(V)$ là mặt phẳng xạ ảnh sinh ra bởi $V$ thì $(\varphi,\psi)$ cảm sinh ra một cặp song ánh $(\mathbb{P}\varphi,\mathbb{P}\psi)$ giữa các điểm và 
+        đường thẳng của $\mathbb{P}(V)$ và $\mathbb{P}\left(V^{*}\right)$. Đó chính là đối ngẫu xạ ảnh.
+        <br> Trong trường hợp đặc biệt, khi $V=\mathbb{K}^{3}$, ta có thể viết đối ngẫu xạ ảnh như sau:
+        $$[a,b,c]\leftrightarrow [\{x,y,z:ax+by+cz=0\}].$$
+        Công thức này giúp ta tính toán tường minh đối ngẫu xạ ảnh khi làm việc với tọa độ.
+    </p>
+
+    <h2>Ứng dụng của đối ngẫu xạ ảnh</h2>
+
+    <p>
+        Ta nhắc lại một lần nữa các tiên đề của mặt phẳng xạ ảnh:
+        <ol>
+            <li>
+                Tồn tại duy nhất một đường thẳng qua hai điểm phân biệt cho trước;
+            </li>
+            <li>
+                Tồn tại duy nhất một điểm trên hai đường thẳng phân biệt cho trước;
+            </li>
+            <li>
+                Cho hai điểm phân biệt $P,Q$ và một đường thẳng $\ell$ không chứa chúng. Khi đó với mỗi điểm $R\in\overline{PQ}$ khác $P,Q$, tồn tại một phép chiếu xuyên tâm $R$ ứng với $\ell$ 
+                và biến $P$ thành $Q$.
+            </li>
+            <li>
+                Cho hai đường thẳng $\ell_{1}$ và $\ell_{2}$ cắt nhau tại $O$. Trên $\ell_{i}$ lấy ba điểm phân biệt $A_{i},B_{i},C_{i}$, với $i=1,2$. 
+                Gọi $P_{A},P_{B},P_{C}$ lần lượt là giao điểm của 
+                $\left(\overline{B_{1}C_{2}},\overline{B_{2}C_{1}}\right),\left(\overline{C_{1}A_{2}},\overline{C_{2}A_{1}}\right),\left(\overline{A_{1}B_{2}},\overline{A_{2}B_{1}}\right)$. 
+                Khi đó $P_{A},P_{B},P_{C}$ thẳng hàng.
+            </li>
+        </ol>
+        Dưới góc nhìn của đối ngẫu xạ ảnh, ta thấy hai tiên đề đầu tiên là một cặp đối ngẫu, trong khi đó mỗi tiên đề còn lại đều là đối ngẫu của chính nó, nếu bạn nhìn tiên đề thứ ba bằng 
+        định lý Desargues, một dạng tương đương.
+        <br> Như vậy, khi ta cần kiểm tra một mô hình nào đó là một mặt phẳng xạ ảnh, ta chỉ cần kiểm tra $3$ tiên đề cuối cùng là đủ, và để chứng minh một cặp định lý đối ngẫu của nhau, 
+        ta chỉ cần chứng minh một trong số chúng.
     </p>
 
     <h4>Trước đó</h4>
-    <a href="affine2.html">Hình học xạ ảnh. Phần 2: Trực giác đại số</a>
+    <a href="projective2.html">Hình học xạ ảnh. Phần 2: Trực giác đại số</a>
 
     <h4>Tiếp theo</h4>
 
